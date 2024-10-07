@@ -1,36 +1,17 @@
 import logo from './logo.svg';
 import './App.css';
+import Footer from './Footer';
+import Header from './Header';
+import Main from './Main';
 
 function App() {
     return (
         <div className="App">
             <Header />
+            <Main />
+            <Footer />
         </div>
     );
-}
-
-function Header() {
-    return (
-        <header>
-            <Navigation>
-
-            </Navigation>
-
-            <h1>Todo List</h1>
-        </header>
-    )
-}
-
-function Navigation() {
-    return (
-        <nav>
-            <ul>
-                <li>Home</li>
-                <li>Projects</li>
-                <li>About Me</li>
-            </ul>
-        </nav>
-    )
 }
 
 export default App;
