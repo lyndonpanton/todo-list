@@ -1,3 +1,29 @@
+function Add() {
+    return (
+        <section>
+            <input type={"text"} placeholder="New list item…" />
+            <button>Add</button>
+        </section>
+    )
+}
+
+function Clear() {
+    return (
+        <section>
+            <button>Clear List</button>
+        </section>
+    )
+}
+
+function Edit() {
+    return (
+        <div>
+            <Add />
+            <Clear />
+        </div>
+    );
+}
+
 function Main() {
     return (
         <main>
@@ -15,6 +41,7 @@ function Todo() {
                 <li>Feed cat</li>
                 <li>Email Bob</li>
             </ul>
+            <Edit />
         </article>
     );
 }
