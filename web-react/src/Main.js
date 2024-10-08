@@ -37,26 +37,22 @@ function Todo() {
         <article>
             <h2>My Todo List{ /* Editable list name*/ }</h2>
             <ul id="todo-list">
-                <li className={"todo-list-item"}>
-                    <input type={"checkbox"} />
-                    Buy groceries
-                </li>
-                <li className={"todo-list-item"}>
-                    <input type={"checkbox"} />
-                    Feed cat
-                </li>
-                <li className={"todo-list-item"}>
-                    <input type={"checkbox"} />
-                    Email Bob
-                </li>
+                <TodoItem task={"Buy groceries"} />
+                <TodoItem task={"Feed cat"} />
+                <TodoItem task={"Email Bob"} />
             </ul>
             <Edit />
         </article>
     );
 }
 
-function TodoItem() {
-
+function TodoItem({ task }) {
+    return (
+        <li className={"todo-list-item"}>
+            <input type={"checkbox"} />
+            { task }
+        </li>
+    );
 }
 
 function createTodo() {
