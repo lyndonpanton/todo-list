@@ -48,3 +48,7 @@
 .todo-list-item {
   list-style-type: none;
 }
+
+.todo-list-item-complete {
+    text-decoration: line-through;
+}

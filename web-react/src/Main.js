@@ -1,3 +1,5 @@
+import {useState} from "react";
+
 function Add() {
     return (
         <section>
@@ -7,10 +9,18 @@ function Add() {
     )
 }
 
+function Checkbox() {
+    return (
+        <input
+            type={"checkbox"}
+        />
+    )
+}
+
 function Clear() {
     return (
         <section>
-            <button>Clear List</button>
+            <button onClick={clearTodoList}>Clear List</button>
         </section>
     )
 }
@@ -27,29 +37,47 @@ function Edit() {
 function Main() {
     return (
         <main>
-            <Todo />
+            <TodoList />
         </main>
     );
 }
 
-function Todo() {
+function TodoList() {
+    const [complete, setComplete] = useState(false);
+
+    function handleClick() {
+        console.log(complete);
+        setComplete(!complete);
+    }
+
     return (
         <article>
             <h2>My Todo List{ /* Editable list name*/ }</h2>
             <ul id="todo-list">
-                <TodoItem task={"Buy groceries"} />
-                <TodoItem task={"Feed cat"} />
-                <TodoItem task={"Email Bob"} />
+                <TodoItem
+                    task={"Buy groceries"}
+                    complete={complete}
+                />
+                <TodoItem
+                    task={"Feed cat"}
+                    complete={complete}
+                />
+                <TodoItem
+                    task={"Email Bob"}
+                    complete={complete}
+                />
             </ul>
             <Edit />
         </article>
     );
 }
 
-function TodoItem({ task }) {
+function TodoItem({ task, complete }) {
+    complete = !complete;
+
     return (
         <li className={"todo-list-item"}>
-            <input type={"checkbox"} />
+            <Checkbox />
             { task }
         </li>
     );
@@ -57,6 +85,10 @@ function TodoItem({ task }) {
 
 function createTodo() {
     console.log("New todo created");
+}
+
+function clearTodoList() {
+    console.log("Todo list cleared");
 }
 
 export default Main;
