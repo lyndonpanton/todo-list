@@ -2,7 +2,7 @@ function Add() {
     return (
         <section>
             <input type={"text"} placeholder="New list item…" />
-            <button>Add</button>
+            <button onClick={createTodo}>Add</button>
         </section>
     )
 }
@@ -37,13 +37,30 @@ function Todo() {
         <article>
             <h2>My Todo List{ /* Editable list name*/ }</h2>
             <ul id="todo-list">
-                <li>Buy groceries</li>
-                <li>Feed cat</li>
-                <li>Email Bob</li>
+                <li className={"todo-list-item"}>
+                    <input type={"checkbox"} />
+                    Buy groceries
+                </li>
+                <li className={"todo-list-item"}>
+                    <input type={"checkbox"} />
+                    Feed cat
+                </li>
+                <li className={"todo-list-item"}>
+                    <input type={"checkbox"} />
+                    Email Bob
+                </li>
             </ul>
             <Edit />
         </article>
     );
+}
+
+function TodoItem() {
+
+}
+
+function createTodo() {
+    console.log("New todo created");
 }
 
 export default Main;

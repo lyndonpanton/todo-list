@@ -45,6 +45,6 @@
     text-align: initial;
 }
 
-.todo-list {
-    list-style-type: none;
+.todo-list-item {
+  list-style-type: none;
 }
