@@ -1,7 +1,7 @@
 function Footer() {
     return (
         <footer>
-            Footer content here...
+            <p>&copy; 2024 Lyndon Mykal Panton – All Rights Reserved</p>
         </footer>
     )
 }
