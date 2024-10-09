@@ -22,13 +22,30 @@ const todos = [
 
 /* Component functions */
 
-/* Helper functions */
+function Add({ setTodoList }) {
+    const [name, setName] = useState("");
 
-function Add() {
+    function handleAdd() {
+        let newKey = todos[todos.length - 1].key + 1;
+        todos.push({ key: newKey, task: name, complete: false });
+        setTodoList(todos);
+        setName("");
+        console.log(todos);
+    }
+
+    function handleChange(event) {
+        setName(event.target.value);
+        console.log("Input edited");
+    }
+
     return (
         <section>
-            <input type={"text"} placeholder="New list item…" />
-            <button onClick={createTodo}>Add</button>
+            <input
+                type={"text"}
+                placeholder="New list item…"
+                onChange={handleChange}
+            />
+            <button onClick={handleAdd}>Add</button>
         </section>
     )
 }
@@ -41,11 +58,11 @@ function Clear() {
     )
 }
 
-function Edit() {
+function Edit({ setTodoList }) {
     return (
         <div>
-            <Add />
-            <Clear />
+            <Add setTodoList={ setTodoList } />
+            <Clear setTodoList={ setTodoList } />
         </div>
     );
 }
@@ -76,7 +93,7 @@ function TodoList() {
                     })
                 }
             </ul>
-            <Edit />
+            <Edit setTodoList={setTodoList} />
         </article>
     );
 }
@@ -105,12 +122,12 @@ function TodoItem({ task }) {
     );
 }
 
-function createTodo() {
-    console.log("New todo created");
-}
+/* Helper functions */
 
 function clearTodoList() {
-    console.log("Todo list cleared");
+    console.log("Todo list cleared…");
 }
+
+/* Exports */
 
 export default Main;
