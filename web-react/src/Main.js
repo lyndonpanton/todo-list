@@ -9,14 +9,6 @@ function Add() {
     )
 }
 
-function Checkbox() {
-    return (
-        <input
-            type={"checkbox"}
-        />
-    )
-}
-
 function Clear() {
     return (
         <section>
@@ -43,28 +35,18 @@ function Main() {
 }
 
 function TodoList() {
-    const [complete, setComplete] = useState(false);
-
-    function handleClick() {
-        console.log(complete);
-        setComplete(!complete);
-    }
-
     return (
         <article>
             <h2>My Todo List{ /* Editable list name*/ }</h2>
             <ul id="todo-list">
                 <TodoItem
                     task={"Buy groceries"}
-                    complete={complete}
                 />
                 <TodoItem
                     task={"Feed cat"}
-                    complete={complete}
                 />
                 <TodoItem
                     task={"Email Bob"}
-                    complete={complete}
                 />
             </ul>
             <Edit />
@@ -72,12 +54,25 @@ function TodoList() {
     );
 }
 
-function TodoItem({ task, complete }) {
-    complete = !complete;
+function TodoItem({ task }) {
+    const [complete, setComplete] = useState(false);
+
+    function handleChange() {
+        setComplete(!complete);
+    }
+
+    let classString = "todo-list-item";
+    if (complete) {
+        classString += " todo-list-item-complete";
+    }
 
     return (
-        <li className={"todo-list-item"}>
-            <Checkbox />
+        <li className={classString}>
+            <input
+                type={"checkbox"}
+                onChange={handleChange}
+                checked={complete}
+            />
             { task }
         </li>
     );
