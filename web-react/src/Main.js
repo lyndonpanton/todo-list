@@ -1,5 +1,29 @@
 import {useState} from "react";
 
+/* Data */
+
+const todos = [
+    {
+        key: 0,
+        task: "Buy groceries",
+        complete: false
+    },
+    {
+        key: 1,
+        task: "Feed cat",
+        complete: false
+    },
+    {
+        key: 2,
+        task: "Email bob",
+        complete: false
+    }
+];
+
+/* Component functions */
+
+/* Helper functions */
+
 function Add() {
     return (
         <section>
@@ -35,19 +59,22 @@ function Main() {
 }
 
 function TodoList() {
+    const [todoList, setTodoList] = useState(todos);
+
     return (
         <article>
             <h2>My Todo List{ /* Editable list name*/ }</h2>
             <ul id="todo-list">
-                <TodoItem
-                    task={"Buy groceries"}
-                />
-                <TodoItem
-                    task={"Feed cat"}
-                />
-                <TodoItem
-                    task={"Email Bob"}
-                />
+                {
+                    todoList.map((item) => {
+                        return (
+                            <TodoItem
+                                key={item.key}
+                                task={item.task}
+                            />
+                        );
+                    })
+                }
             </ul>
             <Edit />
         </article>
