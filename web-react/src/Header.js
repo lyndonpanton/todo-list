@@ -13,10 +13,10 @@ function Header() {
 function Navigation() {
     return (
         <nav>
-            <ul>
-                <li>Home</li>
-                <li>Projects</li>
-                <li>About Me</li>
+            <ul id={"nav-main"}>
+                <li className={"nav-main-item"}>Home</li>
+                <li className={"nav-main-item"}>Projects</li>
+                <li className={"nav-main-item"}>About Me</li>
             </ul>
         </nav>
     )

@@ -22,13 +22,13 @@ const todos = [
 
 /* Component functions */
 
-function Add({ setTodoList }) {
+function Add({ addTodo }) {
     const [name, setName] = useState("");
 
     function handleAdd() {
         let newKey = todos[todos.length - 1].key + 1;
         todos.push({ key: newKey, task: name, complete: false });
-        setTodoList(todos);
+        addTodo(todos);
         setName("");
         console.log(todos);
     }
@@ -50,7 +50,7 @@ function Add({ setTodoList }) {
     )
 }
 
-function Clear() {
+function Clear({ clearTodo }) {
     return (
         <section>
             <button onClick={clearTodoList}>Clear List</button>
@@ -58,12 +58,12 @@ function Clear() {
     )
 }
 
-function Edit({ setTodoList }) {
+function Edit({ stateChanger }) {
     return (
-        <div>
-            <Add setTodoList={ setTodoList } />
-            <Clear setTodoList={ setTodoList } />
-        </div>
+        <form onSubmit={preventDefaultRefresh}>
+            <Add addTodo={ stateChanger } />
+            <Clear clearTodo={ stateChanger } />
+        </form>
     );
 }
 
@@ -86,6 +86,7 @@ function TodoList() {
                     todoList.map((item) => {
                         return (
                             <TodoItem
+                                className={"nav-item"}
                                 key={item.key}
                                 task={item.task}
                             />
@@ -93,7 +94,7 @@ function TodoList() {
                     })
                 }
             </ul>
-            <Edit setTodoList={setTodoList} />
+            <Edit stateChanger={setTodoList} />
         </article>
     );
 }
@@ -126,6 +127,10 @@ function TodoItem({ task }) {
 
 function clearTodoList() {
     console.log("Todo list cleared…");
+}
+
+function preventDefaultRefresh(e) {
+    e.preventDefault();
 }
 
 /* Exports */
