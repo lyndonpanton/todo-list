@@ -1,6 +1,6 @@
 function Header() {
     return (
-        <header>
+        <header id={"header-primary"}>
             <Navigation>
 
             </Navigation>
@@ -13,10 +13,10 @@ function Header() {
 function Navigation() {
     return (
         <nav>
-            <ul id={"nav-main"}>
-                <li className={"nav-main-item"}>Home</li>
-                <li className={"nav-main-item"}>Projects</li>
-                <li className={"nav-main-item"}>About Me</li>
+            <ul id={"nav-primary-list"}>
+                <li className={"nav-primary-list-item"}>Home</li>
+                <li className={"nav-primary-list-item"}>Projects</li>
+                <li className={"nav-primary-list-item"}>About Me</li>
             </ul>
         </nav>
     )

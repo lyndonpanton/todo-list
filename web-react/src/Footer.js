@@ -1,6 +1,6 @@
 function Footer() {
     return (
-        <footer>
+        <footer id={"footer-primary"}>
             <p>&copy; 2024 Lyndon Mykal Panton – All Rights Reserved</p>
         </footer>
     )

@@ -52,7 +52,7 @@ body, html {
     text-align: initial;
 }
 
-.nav-main-item {
+.nav-primary-list-item {
     list-style-type: none;
     text-align: center
 }
@@ -65,7 +65,19 @@ body, html {
     text-decoration: line-through;
 }
 
-#nav-main {
+#footer-primary {
+    text-align: center;
+}
+
+#header-primary {
+    text-align: center;
+}
+
+#main-primary {
+    text-align: center;
+}
+
+#nav-primary-list {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
