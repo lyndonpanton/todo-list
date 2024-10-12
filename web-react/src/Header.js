@@ -12,7 +12,7 @@ function Header() {
 
 function Navigation() {
     return (
-        <nav>
+        <nav id={"nav-primary"}>
             <ul id={"nav-primary-list"}>
                 <li className={"nav-primary-list-item"}>Home</li>
                 <li className={"nav-primary-list-item"}>Projects</li>
