@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
         let todoCheckbox = document.createElement("input");
         todoCheckbox.type = "checkbox";
         todoCheckbox.classList.add("todo-list-checkbox");
+        todoCheckbox.addEventListener("click", checkTodo);
 
         todoItem.append(todoCheckbox);
         todoItem.append(todoText);
