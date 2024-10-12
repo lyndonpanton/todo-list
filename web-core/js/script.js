@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
     addTodoButton.addEventListener("click", addTodo);
 
     let clearTodoListButton = document.getElementById("clear-todo-list-button");
+    clearTodoListButton.addEventListener("click", clearTodoList);
 
     function addTodo(event) {
         event.preventDefault();
@@ -28,5 +29,11 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
     function checkTodo(event) {
        event.target.parentElement.classList.toggle("todo-list-item-complete");
+    }
+
+    function clearTodoList(event) {
+        event.preventDefault();
+
+        todoList.replaceChildren();
     }
 });
