@@ -21,6 +21,11 @@ document.addEventListener("DOMContentLoaded", function(e) {
         let todoItem = document.createElement("li");
         todoItem.classList.add("todo-list-item");
 
+        let todoCheckbox = document.createElement("input");
+        todoCheckbox.type = "checkbox";
+        todoCheckbox.classList.add("todo-list-checkbox");
+
+        todoItem.append(todoCheckbox);
         todoItem.append(todoText);
         todoList.append(todoItem);
 
