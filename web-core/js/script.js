@@ -16,12 +16,14 @@ document.addEventListener("DOMContentLoaded", function(e) {
         event.preventDefault();
 
         let todoText = document.createTextNode(addTodoInput.value);
-        console.log(addTodoInput.value);
+
         let todoItem = document.createElement("li");
         todoItem.classList.add("todo-list-item");
 
         todoItem.append(todoText);
         todoList.append(todoItem);
+
+        addTodoInput.value = "";
     }
 
     function checkTodo(event) {
