@@ -26,8 +26,13 @@ document.addEventListener("DOMContentLoaded", function(e) {
         todoCheckbox.classList.add("todo-list-checkbox");
         todoCheckbox.addEventListener("click", checkTodo);
 
+        let todoDeleteIcon = document.createElement("i");
+        todoDeleteIcon.classList.add("fa-solid", "fa-xmark");
+
         todoItem.append(todoCheckbox);
         todoItem.append(todoText);
+        todoItem.append(todoDeleteIcon);
+
         todoList.append(todoItem);
 
         addTodoInput.value = "";
