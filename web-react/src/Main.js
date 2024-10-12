@@ -41,6 +41,7 @@ function Add({ addTodo }) {
     return (
         <section>
             <input
+                name={"add-todo"}
                 type={"text"}
                 placeholder="New list item…"
                 onChange={handleChange}
