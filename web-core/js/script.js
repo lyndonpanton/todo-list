@@ -6,8 +6,8 @@ document.addEventListener("DOMContentLoaded", function(e) {
         todoCheckboxes[i].addEventListener("click", checkTodo);
     }
 
-    let addTodoInput = document.getElementById("add-todo-input");
-    let addTodoButton = document.getElementById("add-todo-button");
+    let addTodoInput = document.getElementById("todo-add-input");
+    let addTodoButton = document.getElementById("todo-add-button");
     addTodoButton.addEventListener("click", addTodo);
 
     let clearTodoListButton = document.getElementById("clear-todo-list-button");
@@ -16,7 +16,9 @@ document.addEventListener("DOMContentLoaded", function(e) {
     function addTodo(event) {
         event.preventDefault();
 
-        let todoText = document.createTextNode(addTodoInput.value);
+        let todoText = document.createTextNode(
+            " " + addTodoInput.value + " "
+        );
 
         let todoItem = document.createElement("li");
         todoItem.classList.add("todo-list-item");
