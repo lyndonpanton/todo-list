@@ -33,7 +33,11 @@ body {
 }
 
 .todo-list-item {
+    display: block;
+    margin: 3px auto;
+    width: 40%;
     list-style-type: none;
+    text-align: left;
 }
 
 .todo-list-item-complete {
@@ -60,6 +64,22 @@ body {
     border: 1px solid black;
     margin: 0;
     padding: 0;
+}
+
+#todo-add-button {
+
+}
+
+#todo-add-input {
+    margin: 2px auto 10px;
+}
+
+#todo-form {
+
+}
+
+#todo-list {
+
 }
 
 /* Mobile Regular */
