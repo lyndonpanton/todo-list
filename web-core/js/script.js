@@ -18,6 +18,12 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
     function addTodo(event) {
         event.preventDefault();
+        
+        // Check if todo list has default empty text, and if it does remove this
+        // text before adding a new item
+        if (todoList.children.length === 1 && todoList.children[0].id === "todo-list-empty") {
+            
+        }
 
         let todoText = document.createTextNode(
             " " + addTodoInput.value + " "
@@ -45,7 +51,15 @@ document.addEventListener("DOMContentLoaded", function(e) {
     }
 
     function checkTodo(event) {
-       event.target.parentElement.classList.toggle("todo-list-item-complete");
+        // event.target.parentElement.classList.toggle("todo-list-item-complete");
+        let classList = event.target.parentElement.classList;
+        
+        if (classList
+                .contains("todo-list-item-complete")) {
+            classList.remove("todo-list-item-complete");
+        } else {
+            classList.add("todo-list-item-complete");
+        }
     }
 
     function clearTodoList(event) {
@@ -56,5 +70,20 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
     function removeTodo(event) {
         event.target.parentElement.remove();
+        
+        // Check if todo list is empty
+        if (todoList.children.length === 0) {
+            // Add empty todo list element
+            let container = document.createElement("div");
+            container.id = "todo-list-empty"
+            let element = document.createElement("p");
+            let text = 
+                document.createTextNode("Add some todos to me!");
+            
+            element.appendChild(text);
+            container.appendChild(element);
+            
+            todoList.appendChild(container);
+        }
     }
 });
