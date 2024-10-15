@@ -21,8 +21,9 @@ document.addEventListener("DOMContentLoaded", function(e) {
         
         // Check if todo list has default empty text, and if it does remove this
         // text before adding a new item
-        if (todoList.children.length === 1 && todoList.children[0].id === "todo-list-empty") {
-            
+        if (todoList.children.length === 1
+                && todoList.children[0].id === "todo-list-empty") {
+            todoList.children[0].remove();
         }
 
         let todoText = document.createTextNode(
@@ -49,6 +50,23 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
         addTodoInput.value = "";
     }
+    
+    function addTodoListEmpty() {
+        // Check if todo list is empty
+        if (todoList.children.length === 0) {
+            // Add empty todo list element
+            let container = document.createElement("div");
+            container.id = "todo-list-empty";
+            let element = document.createElement("p");
+            let text =
+                document.createTextNode("Add some todos to me!");
+
+            element.appendChild(text);
+            container.appendChild(element);
+
+            todoList.appendChild(container);
+        }
+    }
 
     function checkTodo(event) {
         // event.target.parentElement.classList.toggle("todo-list-item-complete");
@@ -66,24 +84,12 @@ document.addEventListener("DOMContentLoaded", function(e) {
         event.preventDefault();
 
         todoList.replaceChildren();
+        addTodoListEmpty();
     }
 
     function removeTodo(event) {
         event.target.parentElement.remove();
         
-        // Check if todo list is empty
-        if (todoList.children.length === 0) {
-            // Add empty todo list element
-            let container = document.createElement("div");
-            container.id = "todo-list-empty"
-            let element = document.createElement("p");
-            let text = 
-                document.createTextNode("Add some todos to me!");
-            
-            element.appendChild(text);
-            container.appendChild(element);
-            
-            todoList.appendChild(container);
-        }
+        addTodoListEmpty();
     }
 });
