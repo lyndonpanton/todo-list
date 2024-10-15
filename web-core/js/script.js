@@ -35,36 +35,36 @@ document.addEventListener("DOMContentLoaded", function(e) {
     function addTodo(event) {
         event.preventDefault();
         
-        // Check if todo list has default empty text, and if it does remove this
-        // text before adding a new item
-        if (todoList.children.length === 1
+        if (addTodoInput.value !== "") {
+            if (todoList.children.length === 1
                 && todoList.children[0].id === "todo-list-empty") {
-            todoList.children[0].remove();
+                todoList.children[0].remove();
+            }
+
+            let todoText = document.createTextNode(
+                " " + addTodoInput.value + " "
+            );
+
+            let todoItem = document.createElement("li");
+            todoItem.classList.add("todo-list-item");
+
+            let todoCheckbox = document.createElement("input");
+            todoCheckbox.type = "checkbox";
+            todoCheckbox.classList.add("todo-list-checkbox");
+            todoCheckbox.addEventListener("click", checkTodo);
+
+            let todoDeleteIcon = document.createElement("i");
+            todoDeleteIcon.classList.add("fa-solid", "fa-xmark", "todo-list-cross");
+            todoDeleteIcon.addEventListener("click", removeTodo);
+
+            todoItem.append(todoCheckbox);
+            todoItem.append(todoText);
+            todoItem.append(todoDeleteIcon);
+
+            todoList.append(todoItem);
+
+            addTodoInput.value = "";
         }
-
-        let todoText = document.createTextNode(
-            " " + addTodoInput.value + " "
-        );
-
-        let todoItem = document.createElement("li");
-        todoItem.classList.add("todo-list-item");
-
-        let todoCheckbox = document.createElement("input");
-        todoCheckbox.type = "checkbox";
-        todoCheckbox.classList.add("todo-list-checkbox");
-        todoCheckbox.addEventListener("click", checkTodo);
-
-        let todoDeleteIcon = document.createElement("i");
-        todoDeleteIcon.classList.add("fa-solid", "fa-xmark", "todo-list-cross");
-        todoDeleteIcon.addEventListener("click", removeTodo);
-
-        todoItem.append(todoCheckbox);
-        todoItem.append(todoText);
-        todoItem.append(todoDeleteIcon);
-
-        todoList.append(todoItem);
-
-        addTodoInput.value = "";
     }
     
     function addTodoListEmpty() {
