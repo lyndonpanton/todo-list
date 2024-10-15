@@ -129,6 +129,11 @@ document.addEventListener("DOMContentLoaded", function(e) {
             header.classList.remove("todo-list-header-title-active");
             editIcon.classList.remove("todo-list-header-edit-active");
             header.contentEditable = "false";
+            
+            // If the user attempts to make an empty heading…
+            if (header.textContent === "") {
+                header.textContent = "My Todo List";
+            }
         } else {
             header.classList.add("todo-list-header-title-active");
             editIcon.classList.add("todo-list-header-edit-active");
