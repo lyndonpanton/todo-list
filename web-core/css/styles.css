@@ -32,6 +32,10 @@ body {
     text-align: center;
 }
 
+.todo-list-cross {
+    cursor: pointer;
+}
+
 .todo-list-item {
     display: block;
     margin: 3px auto;
