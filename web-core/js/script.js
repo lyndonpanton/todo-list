@@ -24,6 +24,13 @@ document.addEventListener("DOMContentLoaded", function(e) {
             "click", toggleTodoHeaderEditable, false
         );
     }
+    
+    let todoHeaderHeadings =
+        document.getElementsByClassName("todo-list-header-title");
+    
+    for (let i = 0; i < todoHeaderHeadings.length; i++) {
+        todoHeaderHeadings[i].addEventListener("keypress", handleHeaderHeadingEdit);
+    }
 
     function addTodo(event) {
         event.preventDefault();
@@ -94,6 +101,16 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
         todoList.replaceChildren();
         addTodoListEmpty();
+    }
+    
+    function handleHeaderHeadingEdit(event) {
+        console.log(event.keyCode);
+        
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            
+            // TODO: Make content uneditable after pressing the enter key
+        }
     }
 
     function removeTodo(event) {
