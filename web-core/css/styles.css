@@ -17,6 +17,8 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+
+
 /* Mobile Small */
 
 body {
@@ -33,6 +35,21 @@ body {
 }
 
 .todo-list-cross {
+    cursor: pointer;
+}
+
+.todo-list-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.todo-list-header > h2 {
+    /*margin-right: 20px;*/
+}
+
+.todo-list-header > i {
+    margin-left: 20px;
     cursor: pointer;
 }
 
