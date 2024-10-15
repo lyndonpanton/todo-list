@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
     for (let i = 0; i < todoCheckboxes.length; i++) {
         todoCheckboxes[i].addEventListener("click", checkTodo);
-        // All todo list items have checkbox and cross icon
         todoCrosses[i].addEventListener("click", removeTodo);
     }
 
