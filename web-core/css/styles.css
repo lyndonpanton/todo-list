@@ -49,8 +49,18 @@ body {
     cursor: pointer;
 }
 
+.todo-list-header-edit-active {
+    color: lightgreen;
+}
+
 .todo-list-header-title {
 
+}
+
+.todo-list-header-title-active {
+    outline: none;
+    text-decoration: underline;
+    text-decoration-color: lightgreen;
 }
 
 .todo-list-item {

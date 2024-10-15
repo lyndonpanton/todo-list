@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
         if (event.keyCode === 13) {
             event.preventDefault();
             
-            // TODO: Make content uneditable after pressing the enter key
+            toggleTodoHeaderEditable(event);
         }
     }
 
@@ -122,13 +122,18 @@ document.addEventListener("DOMContentLoaded", function(e) {
     function toggleTodoHeaderEditable(event) {
         let header = event.target.parentElement
             .getElementsByClassName("todo-list-header-title")[0];
+        let editIcon = event.target.parentElement
+            .getElementsByClassName("todo-list-header-edit")[0];
         
         if (header.contentEditable === "true") {
-            header.contentEditable = false;
+            header.classList.remove("todo-list-header-title-active");
+            editIcon.classList.remove("todo-list-header-edit-active");
+            header.contentEditable = "false";
         } else {
+            header.classList.add("todo-list-header-title-active");
+            editIcon.classList.add("todo-list-header-edit-active");
             header.contentEditable = "true";
+            header.focus();
         }
-        
-        console.log(header.contentEditable);
     }
 });
