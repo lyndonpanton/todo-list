@@ -44,13 +44,13 @@ body {
     align-items: center;
 }
 
-.todo-list-header > h2 {
-    /*margin-right: 20px;*/
-}
-
-.todo-list-header > i {
+.todo-list-header-edit {
     margin-left: 20px;
     cursor: pointer;
+}
+
+.todo-list-header-title {
+
 }
 
 .todo-list-item {

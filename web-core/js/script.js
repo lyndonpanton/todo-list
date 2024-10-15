@@ -15,6 +15,15 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
     let clearTodoListButton = document.getElementById("clear-todo-list-button");
     clearTodoListButton.addEventListener("click", clearTodoList);
+    
+    let todoHeaderEditIcons =
+        document.getElementsByClassName("todo-list-header-edit");
+    
+    for (let i = 0; i < todoHeaderEditIcons.length; i++) {
+        todoHeaderEditIcons[i].addEventListener(
+            "click", toggleTodoHeaderEditable, false
+        );
+    }
 
     function addTodo(event) {
         event.preventDefault();
@@ -91,5 +100,18 @@ document.addEventListener("DOMContentLoaded", function(e) {
         event.target.parentElement.remove();
         
         addTodoListEmpty();
+    }
+    
+    function toggleTodoHeaderEditable(event) {
+        let header = event.target.parentElement
+            .getElementsByClassName("todo-list-header-title")[0];
+        
+        if (header.contentEditable === "true") {
+            header.contentEditable = false;
+        } else {
+            header.contentEditable = "true";
+        }
+        
+        console.log(header.contentEditable);
     }
 });
