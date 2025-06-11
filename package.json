@@ -1,0 +1,35 @@
+{
+    "name": "todo-list",
+    "version": "1.0.0",
+    "description": "An application which allows users to create projects with todos",
+    "keywords": [
+        "todo",
+        "todos",
+        "task",
+        "tasks",
+        "todo list",
+        "task list",
+        "project",
+        "projects",
+        "plan",
+        "planning",
+        "schedule",
+        "manager",
+        "management"
+    ],
+    "homepage": "https://github.com/lyndonpanton/todo-list#readme",
+    "bugs": {
+        "url": "https://github.com/lyndonpanton/todo-list/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/lyndonpanton/todo-list.git"
+    },
+    "license": "ISC",
+    "author": "Lyndon Mykal Panton lyndonpanton@gmail.com (https://lyndonpanton.co.uk)",
+    "type": "commonjs",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    }
+}
