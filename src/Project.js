@@ -1,3 +1,5 @@
+import Todo from "./Todo";
+
 class Project {
     constructor(name) {
         this.id = self.crypto.randomUUID();
@@ -7,6 +9,11 @@ class Project {
 
     addTodo(todo) {
         this.todos = [...this.todos, todo];
+    }
+
+    addTodo(title, description, dueDate, priority) {
+        let todo = new Todo(title, description, false, dueDate, priority);
+        this.addTodo(todo);
     }
     
     getTodo(id) {

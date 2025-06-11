@@ -1,10 +1,17 @@
+import Project from "./Project";
+
 class TodoList {
     constructor() {
         this.projects = [];
     }
 
-    addProject(project) {
+    addProjectByObject(project) {
         this.projects = [this.projects, project];
+    }
+
+    addProjectByName(name) {
+        let project = new Project(name);
+        this.addProjectByObject(project);
     }
 
     getProject(id) {
