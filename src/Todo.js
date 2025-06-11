@@ -1,8 +1,9 @@
 class Todo {
-    constructor(title, description, dueDate, priority) {
+    constructor(title, description, isComplete, dueDate, priority) {
         this.id = self.crypto.randomUUID();
         this.title = title;
         this.description = description;
+        this.isComplete = isComplete;
         this.dueDate = dueDate;
         this.priority = priority;
     }
@@ -13,6 +14,10 @@ class Todo {
 
     getDescription() {
         return this.description;
+    }
+
+    getIsComplete() {
+        return this.isComplete;
     }
 
     getDueDate() {
@@ -29,6 +34,10 @@ class Todo {
 
     setDescription(description) {
         this.description = description;
+    }
+
+    setIsComplete(isComplete) {
+        this.isComplete = isComplete;
     }
 
     setDueDate(dueDate) {
