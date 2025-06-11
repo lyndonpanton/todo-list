@@ -6,6 +6,7 @@ class Todo {
         this.isComplete = isComplete;
         this.dueDate = dueDate;
         this.priority = priority;
+        console.log(`"${title}" todo was created`);
     }
 
     getTitle() {

@@ -5,10 +5,12 @@ class Project {
         this.id = self.crypto.randomUUID();
         this.name = name;
         this.todos = [];
+        console.log(`"${name}" project was created`);
     }
 
     addTodo(todo) {
-        this.todos = [...this.todos, todo];
+        // this.todos = [...this.todos, todo];
+        this.todos.push(todo);
     }
 
     addTodo(title, description, dueDate, priority) {
