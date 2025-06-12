@@ -4,6 +4,8 @@ class UI {
     constructor(todoList) {
         this.todoList = todoList;
         this.main = document.getElementsByTagName("main")[0];
+        this.newProjectName = "";
+        this.newProjectDescription = "";
     }
 
     clearDisplay() {
@@ -12,12 +14,65 @@ class UI {
         }
     }
 
+    createProject(e) {
+        e.preventDefault();
+
+        console.log(this.newProjectName);
+        console.log(this.newProjectDescription);
+
+        this.todoList.addProjectByObject(new Project(
+            this.newProjectName, this.newProjectDescription
+        ));
+
+        this.newProjectName = "";
+        this.newProjectDescription = "";
+
+        this.displayTodoList();
+    }
+
+    displayCreateProjectDialog() {
+        // Project: name, description
+        let form = document.createElement("form");
+        form.setAttribute("id", "dialog-area");
+        form.addEventListener("submit", this.createProject.bind(this));
+
+        let projectName = document.createElement("input");
+        projectName.type = "text";
+        projectName.classList.add("dialog-project-name");
+        projectName.addEventListener("keyup", this.updateNewProjectName.bind(this));
+
+        let projectDescription = document.createElement("textarea");
+        projectDescription.classList.add("dialog-project-description");
+        projectDescription.addEventListener("keyup", this.updateNewProjectDescription.bind(this));
+
+        let submitButton = document.createElement("button");
+        submitButton.type = "submit";
+        // submitButton.classList.add("");
+        submitButton.textContent = "Create";
+
+        form.appendChild(projectName);
+        form.appendChild(projectDescription);
+        form.appendChild(submitButton);
+        
+        this.main.appendChild(form);
+    }
+
     // Contains projects
     displayTodoList() {
         this.clearDisplay();
 
         let todoList = document.createElement("section");
         todoList.setAttribute("id", "todo-list");
+
+        let createProject = document.createElement("button");
+        createProject.classList.add("todo-list-project-create");
+        createProject.textContent = "+";
+        createProject.addEventListener("click", this.displayCreateProjectDialog.bind(this));
+
+        todoList.appendChild(createProject);
+
+        let todoListProjects = document.createElement("section");
+        todoListProjects.setAttribute("id", "todo-list-projects");
 
         for (let i = 0; i < this.todoList.projects.length; i++) {
             let currentProject = this.todoList.projects[i];
@@ -41,8 +96,10 @@ class UI {
             project.appendChild(projectName);
             project.appendChild(projectDescription);
 
-            todoList.appendChild(project);
+            todoListProjects.appendChild(project);
         }
+
+        todoList.appendChild(todoListProjects);
 
         this.main.appendChild(todoList);
     }
@@ -106,6 +163,14 @@ class UI {
     // Contains todo data
     displayTodo(id) {
 
+    }
+
+    updateNewProjectName(e) {
+        this.newProjectName = e.target.value;
+    }
+    
+    updateNewProjectDescription(e) {
+        this.newProjectDescription = e.target.value;
     }
 }
 

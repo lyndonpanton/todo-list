@@ -11,8 +11,8 @@ class TodoList {
         this.projects.push(project);
     }
 
-    addProjectByName(name) {
-        let project = new Project(name);
+    addProjectByName(name, description) {
+        let project = new Project(name, description);
         this.addProjectByObject(project);
     }
 

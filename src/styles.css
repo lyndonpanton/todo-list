@@ -17,6 +17,34 @@ input, button, select {
     appearance: none;
 }
 
+/* Dialog */
+#dialog {
+    display: block;
+
+    width: 100vw;
+    height: 100vh;
+
+    background-color: #AAAAAA;
+}
+
+#dialog-area {
+    display: block;
+
+    width: 800px;
+    height: 300px;
+    border: 2px solid black;
+
+    background-color: white;
+}
+
+.dialog-project-name {
+
+}
+
+.dialog-project-descripton {
+
+}
+
 /* Header */
 header {
     padding: 20px 0;
@@ -36,11 +64,31 @@ h1 {
 
 /* Todo List */
 #todo-list {
+    padding: 40px 40px;
+}
+
+.todo-list-project-create {
+    display: block;
+
+    margin: 0 auto;
+    width: 80px;
+    height: 80px;
+    border: 2px solid black;
+    border-radius: 50%;
+    /* padding: 10px 40px; */
+
+    background-color: white;
+    
+    font-size: 3.5rem;
+    text-align: center;
+}
+
+#todo-list-projects {
     display: flex;
     flex-direction: row;
     gap: 20px;
 
-    padding: 80px 40px;
+    margin: 40px 0;
 }
 
 .todo-list-project {
