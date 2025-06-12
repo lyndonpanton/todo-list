@@ -1,11 +1,11 @@
 import Todo from "./Todo";
 
 class Project {
-    constructor(name) {
+    constructor(name, description) {
         this.id = self.crypto.randomUUID();
         this.name = name;
+        this.description = description;
         this.todos = [];
-        console.log(`"${name}" project was created`);
     }
 
     addTodo(todo) {

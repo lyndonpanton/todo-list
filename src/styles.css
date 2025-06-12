@@ -6,9 +6,76 @@ body, html {
     margin: 0;
     padding: 0;
 
-    background-color: bisque;
+    background-color: white;
 
     font-size: 16px;
     font-style: normal;
     font-weight: normal;
 }
+
+/* Header */
+header {
+    padding: 20px 0;
+
+    background-color: #4682A1;
+
+    color: white;
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+
+    text-align: center;
+}
+
+/* Todo List */
+#todo-list {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+
+    padding: 80px 40px;
+}
+
+.todo-list-project {
+    width: 300px;
+    height: 200px;
+    /* border: 1px solid lightgrey; */
+    border-radius: 4px;
+    padding: 20px;
+
+    box-shadow: 
+            0 0 2px #AAAAAA,
+            0 0 4px #CCCCCC,
+            0 0 6px #EEEEEE;
+    transition: all 0.25s linear;
+}
+
+.todo-list-project:hover {
+    box-shadow: 
+            0 0 2px #70809A,
+            0 0 4px #90A2BC,
+            0 0 6px #B0C4DE;
+    /* border: 2px solid #b0c4de; */
+    
+    transform: scale(1.04);
+
+    transition: all 0.25s linear;
+}
+
+.todo-list-project-name {
+    margin: 0;
+
+    text-align: center;
+}
+
+.todo-list-project-description {
+    color: #888888;
+}
+
+/* Project */
+
+/* Todo */
+
+/* Footer */
