@@ -13,6 +13,10 @@ body, html {
     font-weight: normal;
 }
 
+input, button, select {
+    appearance: none;
+}
+
 /* Header */
 header {
     padding: 20px 0;
@@ -26,6 +30,7 @@ h1 {
     margin: 0;
     padding: 0;
 
+    font-size: 3rem;
     text-align: center;
 }
 
@@ -75,6 +80,87 @@ h1 {
 }
 
 /* Project */
+#project {
+
+}
+
+.project-heading {
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+.project-todos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.project-todo {
+    position: relative;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    width: 50%;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    border-collapse: collapse;
+    padding: 0 15px 0 15px;
+
+    list-style-type: none;
+
+    font-size: 1.5rem;
+}
+
+.project-todo:nth-child(2n - 1) {
+    border-right: 1px solid black;
+}
+
+.project-todo-checkbox {
+    position: relative;
+    margin-right: 15px;
+    width: 40px;
+    height: 40px;
+    border: 1px solid black;
+    border-radius: 50%;
+
+    transition: all 1s linear;
+}
+
+.project-todo-checkbox:checked::after {
+    content: "";
+    position: absolute;
+    top: 3.5px;
+    left: 3.5px;
+
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: lightsteelblue;
+
+    transition: all 1s linear;
+}
+
+.project-todo-name {
+    display: inline-block;
+}
+
+.project-todo-checkbox:checked + .project-todo-name {
+    color: lightgrey;
+    text-decoration: line-through;
+}
+
+.project-todo-checkbox:checked + * + .project-todo-delete {
+    color: lightgrey;
+}
+
+.project-todo-delete {
+    position: absolute;
+    right: 15px;
+
+    display: inline-block;
+}
 
 /* Todo */
 

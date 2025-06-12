@@ -11,12 +11,13 @@ class Project {
     addTodo(todo) {
         // this.todos = [...this.todos, todo];
         this.todos.push(todo);
+        console.log(`Todo: "${todo.title}" added to "${this.name}" project.`);
     }
 
-    addTodo(title, description, dueDate, priority) {
-        let todo = new Todo(title, description, false, dueDate, priority);
-        this.addTodo(todo);
-    }
+    // addTodo(title, description, dueDate, priority) {
+    //     let todo = new Todo(title, description, false, dueDate, priority);
+    //     this.addTodo(todo);
+    // }
     
     getTodo(id) {
         for (let i = 0; i < this.todos.length; i++) {
