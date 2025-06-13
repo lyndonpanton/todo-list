@@ -116,6 +116,12 @@ class UI {
                 projectHeading.classList.add("project-heading");
                 projectHeading.textContent = projects[i].name;
 
+                let backButton = document.createElement("button");
+                backButton.type = "button";
+                backButton.classList.add("project-button-back");
+                backButton.textContent = "<-";
+                backButton.addEventListener("click", this.displayTodoList.bind(this));
+
                 let projectTodos = document.createElement("ul");
                 projectTodos.classList.add("project-todos");
 
@@ -149,6 +155,7 @@ class UI {
                 }
 
                 project.appendChild(projectHeading);
+                project.appendChild(backButton);
                 project.appendChild(projectTodos);
 
                 this.main.appendChild(project);

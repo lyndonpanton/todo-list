@@ -10,6 +10,9 @@ A list of tasks for this project.
 
 - [ ] Users should be able to go back to the todo list page from a project
 - [ ] Users should be able to view individual todos
+- [ ] Users should be able to delete individual todos
+- [ ] Users should be able to exit individual todos without modifying them
+- [ ] Users should be able to delete projects
 - [ ] When creating todos, users should be able to set their
     - [ ] Due date
     - [ ] Priority
