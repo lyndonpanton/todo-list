@@ -11,7 +11,6 @@ class Project {
     addTodo(todo) {
         // this.todos = [...this.todos, todo];
         this.todos.push(todo);
-        console.log(`Todo: "${todo.title}" added to "${this.name}" project.`);
     }
 
     // addTodo(title, description, dueDate, priority) {

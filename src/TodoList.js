@@ -3,7 +3,6 @@ import Project from "./Project";
 class TodoList {
     constructor() {
         this.projects = [];
-        console.log("Todo List was created");
     }
 
     addProjectByObject(project) {

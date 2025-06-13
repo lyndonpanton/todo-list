@@ -17,9 +17,6 @@ class UI {
     createProject(e) {
         e.preventDefault();
 
-        console.log(this.newProjectName);
-        console.log(this.newProjectDescription);
-
         this.todoList.addProjectByObject(new Project(
             this.newProjectName, this.newProjectDescription
         ));
