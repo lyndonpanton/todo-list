@@ -10,6 +10,7 @@ class UI {
         this.newProjectDescription = "";
 
         this.updatedTodoTitle = "";
+        this.updatedTodoIsComplete = "";
         this.updatedTodoPriority = "";
         this.updatedTodoDueDate = "";
         this.updatedTodoDescription = "";
@@ -156,19 +157,26 @@ class UI {
                         todoTitle.type = "text";
                         todoTitle.value = todo.getTitle();
                         todoTitle.classList.add("todo-title");
-                        todoTitle.addEventListener("keyup", this.updateNewTodoTitle.bind(this));
+                        todoTitle.addEventListener("keyup", this.updateEditedTodoTitle.bind(this));
+
+                        let todoIsComplete = document.createElement("input");
+                        todoIsComplete.type = "checkbox";
+                        todoIsComplete.checked = todo.isComplete;
+                        todoIsComplete.classList.add("todo-is-complete");
+                        todoIsComplete.addEventListener("click", this.updateEditedTodoIsComplete.bind(this));
 
                         let todoDueDate = document.createElement("input");
-                        todoDueDate.type = "datetime-local";
+                        todoDueDate.type = "date";
                         todoDueDate.classList.add("todo-due-date");
                         // Convert to appropriate format
                         // todoDueDate.value = todo.dueDate;
 
                         let todoPriority = document.createElement("select");
 
-                        let todoDescription = document.createElement("text-area");
+                        let todoDescription = document.createElement("textarea");
                         todoDescription.classList.add("todo-description");
                         todoDescription.textContent = todo.description;
+                        todoDescription.addEventListener("keyup", this.updateEditedTodoDescription.bind(this));
 
                         let todoModify = document.createElement("button");
                         todoModify.type = "button";
@@ -177,6 +185,7 @@ class UI {
                         todoModify.textContent = "Update";
 
                         todoElement.appendChild(todoTitle);
+                        todoElement.appendChild(todoIsComplete);
                         todoElement.appendChild(todoDueDate);
                         todoElement.appendChild(todoPriority);
                         todoElement.appendChild(todoDescription);
@@ -184,6 +193,18 @@ class UI {
 
                         todoArea.appendChild(todoAreaClose);
                         todoArea.appendChild(todoElement);
+
+                        this.updatedTodoTitle = todo.getTitle();
+                        this.updatedTodoIsComplete = todo.getIsComplete();
+                        this.updatedTodoDescription = todo.getDescription();
+                        this.updatedTodoDueDate = todo.getDueDate();
+                        this.updatedTodoPriority = todo.getPriority();
+
+                        console.log(this.updatedTodoTitle);
+                        console.log(this.updatedTodoIsComplete);
+                        console.log(this.updatedTodoDescription);
+                        console.log(this.updatedTodoDueDate);
+                        console.log(this.updatedTodoPriority);
 
                         document.body.appendChild(todoArea);
 
@@ -248,23 +269,25 @@ class UI {
         this.newProjectDescription = e.target.value;
     }
 
-    updateNewTodoTitle(e) {
+    updateEditedTodoTitle(e) {
         this.updatedTodoTitle = e.target.value;
     }
 
-    updateNewTodoDueDate(e) {
+    updateEditedTodoIsComplete(e) {
+        this.updatedTodoIsComplete = e.target.checked;
+        console.log(this.updatedTodoIsComplete);
+    }
+
+    updateEditedTodoDueDate(e) {
         this.updatedTodoDueDate = e.target.value;
-        console.log(this.updatedTodoDueDate);
     }
 
-    updateNewTodoPriority(e) {
+    updateEditedTodoPriority(e) {
         this.updatedTodoPriority = e.target.value;
-        console.log(this.updatedTodoPriority);
     }
 
-    updateNewTodoDescription(e) {
+    updateEditedTodoDescription(e) {
         this.updatedTodoDescription = e.target.value;
-        console.log(this.updatedTodoDescription);
     }
 
     updateTodo(projectId, todoId) {
@@ -278,25 +301,30 @@ class UI {
 
                     if (todo.id === todoId) {
                         // If empty, set to default
-                        // this.todoList.projects[i].todos.push(new Todo(
-                        //     this.updatedTodoTitle,
-                        //     this.updatedTodoDescription,
-                        //     false,
-                        //     this.updatedTodoDueDate,
-                        //     this.updatedTodoPriority,
-                        // ));
+                        this.todoList.projects[i].todos[j].setTitle(this.updatedTodoTitle);
+                        this.todoList.projects[i].todos[j].setDescription(this.updatedTodoDescription);
+                        this.todoList.projects[i].todos[j].setIsComplete(this.updateEditedTodoIsComplete);
+                        // this.todoList.projects[i].todos[j].setDueDate(this.updateTodoDueDate);
+                        this.todoList.projects[i].todos[j].setPriority(this.updatedTodoPriority);
+
+                        console.log(this.updatedTodoTitle);
+                        console.log(this.updatedTodoIsComplete);
+                        console.log(
+                            this.updatedTodoDueDate.getDate()
+                            + "/" + (this.updatedTodoDueDate.getMonth() + 1)
+                            + "/" + this.updatedTodoDueDate.getFullYear()
+                        );
+                        console.log(this.updatedTodoPriority);
+                        console.log(this.updatedTodoDescription);
 
                         this.updatedTodoTitle = "";
                         this.updatedTodoDescription = "";
+                        this.updatedTodoIsComplete = false;
                         this.updatedTodoDueDate = "";
                         this.updatedTodoPriority = "";
 
-                        console.log(this.updatedTodoTitle);
-                        console.log(this.updatedTodoDescription);
-                        console.log(this.updatedTodoDueDate);
-                        console.log(this.updatedTodoPriority);
-
                         this.closeTodoArea();
+                        this.displayProject(projectId);
 
                         break;
                     }

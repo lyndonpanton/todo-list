@@ -9,9 +9,10 @@ A list of tasks for this project.
 ### MVP
 
 - [x] Users should be able to go back to the todo list page from a project
-- [ ] Users should be able to view individual todos
+- [x] Users should be able to view individual todos
+- [ ] Users should be able to update individual todos
+- [ ] Users should be able to exit individual todos without updating them
 - [ ] Users should be able to delete individual todos
-- [ ] Users should be able to exit individual todos without modifying them
 - [ ] Users should be able to delete projects
     - [ ] They should be able to do this from the todo list view or the project
     view
@@ -29,6 +30,13 @@ A list of tasks for this project.
 
 ### Additional
 
+- [ ] Form validation
+    - [ ] Project
+        - [ ] Create
+        - [ ] Update
+    - [ ] Todo
+        - [ ] Create
+        - [ ] Update
 - [ ] Users should be sent to a default project when they first start the
 application
     - [ ] This project cannot be deleted
