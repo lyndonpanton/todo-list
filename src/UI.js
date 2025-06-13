@@ -39,7 +39,16 @@ class UI {
     }
 
     deleteProject(projectId) {
+        for (let i = 0; i < this.todoList.projects.length; i++) {
+            let project = this.todoList.projects[i];
 
+            if (project.id === projectId) {
+                this.todoList.projects.splice(i, 1);
+                this.displayTodoList();
+                
+                return;
+            }
+        }
     }
 
     deleteTodo(projectId, todoId) {
@@ -300,7 +309,7 @@ class UI {
             let projectDelete = document.createElement("button");
             projectDelete.classList.add("todo-list-project-delete");
             projectDelete.textContent = "Delete";
-            projectDelete.addEventListener("click", this.deleteProject.bind(currentProject.id));
+            projectDelete.addEventListener("click", this.deleteProject.bind(this, currentProject.id));
 
             project.appendChild(projectName);
             project.appendChild(projectDescription);

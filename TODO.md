@@ -17,7 +17,7 @@ A list of tasks for this project.
     - [ ] From todo list view
     - [ ] From project view
 - [ ] Users should be able to delete projects
-    - [ ] From todo list view
+    - [x] From todo list view
     - [ ] From project project view
 - [ ] Users should be able to create todos
     - [ ] Title
