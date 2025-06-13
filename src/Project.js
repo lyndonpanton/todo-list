@@ -55,7 +55,8 @@ class Project {
 
     deleteTodo(id) {
         for (let i = 0; i < this.todos.length; i++) {
-            if (this.todos[i].id == id) {
+            console.log(`${this.todos[i].title}`);
+            if (this.todos[i].id === id) {
                 this.todos.splice(i, 1);
                 return;
             }

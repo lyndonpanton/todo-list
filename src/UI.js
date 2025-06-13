@@ -43,6 +43,28 @@ class UI {
         this.displayTodoList();
     }
 
+    deleteTodo(projectId, todoId) {
+        let todoFound = false;
+
+        for (let i = 0; i < this.todoList.projects.length; i++) {
+            let project = this.todoList.projects[i];
+
+            if (project.id === projectId) {
+                for (let j = 0; j < project.todos.length; j++) {
+                    let todo = project.todos[j];
+
+                    if (todo.id === todoId) {
+                        this.todoList.projects[i].deleteTodo(todo.id);
+                    }
+                }
+            }
+
+            if (todoFound) break;
+        }
+
+        this.displayProject(projectId);
+    }
+
     displayCreateProjectDialog() {
         // Project: name, description
         let form = document.createElement("form");
@@ -120,6 +142,7 @@ class UI {
                     let todoDelete = document.createElement("span");
                     todoDelete.classList.add("project-todo-delete");
                     todoDelete.textContent = "Delete";
+                    todoDelete.addEventListener("click", this.deleteTodo.bind(this, id, todos[j].id));
 
                     todo.appendChild(todoCheckbox);
                     todo.appendChild(todoName);
