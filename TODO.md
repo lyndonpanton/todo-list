@@ -10,18 +10,18 @@ A list of tasks for this project.
 
 - [x] Users should be able to go back to the todo list page from a project
 - [x] Users should be able to view individual todos
-- [ ] Users should be able to update individual todos
-    - [x] Title
-    - [x] Description
-    - [x] Is complete
-    - [ ] Due date
-    - [x] Priority
+- [x] Users should be able to update individual todos
 - [ ] Users should be able to exit individual todos without updating them
 - [x] Users should be able to delete individual todos
+- [ ] Users should be able to update projects
+    - [ ] From todo list view
+    - [ ] From project view
 - [ ] Users should be able to delete projects
-    - [ ] From the todo list view
-    - [ ] From the project project view
-- [ ] When creating todos, users should be able to set their
+    - [ ] From todo list view
+    - [ ] From project project view
+- [ ] Users should be able to create todos
+    - [ ] Title
+    - [ ] Description
     - [ ] Due date
     - [ ] Priority
 - [ ] Todos in project should show their
@@ -30,6 +30,11 @@ A list of tasks for this project.
         - Darkblue
         - Purple
         - Cyan
+- [ ] Use icons for certain buttons
+    - [ ] Update project in todo list view
+    - [ ] Delete project in todo list view
+    - [ ] Update todo in project view
+    - [ ] Delete todo in project view
 - [ ] The application should have data persistence
 
 ### Additional
@@ -56,5 +61,7 @@ application
     - [ ] By title
     - [ ] By due date
     - [ ] By priority
+- [ ] Project descriptions should be cut off with an ellipsis if they are too
+long
 
 ### Bugs

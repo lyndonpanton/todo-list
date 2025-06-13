@@ -38,6 +38,10 @@ class UI {
         this.displayTodoList();
     }
 
+    deleteProject(projectId) {
+
+    }
+
     deleteTodo(projectId, todoId) {
         let todoFound = false;
 
@@ -87,7 +91,14 @@ class UI {
         this.main.appendChild(form);
     }
 
-    displayProject(id) {
+    displayProject(e, id) {
+        if (
+            e.target.classList.contains("todo-list-project-update")
+            || e.target.classList.contains("todo-list-project-delete")
+        ) {
+            return;
+        }
+
         this.clearDisplay();
 
         let projects = this.todoList.projects;
@@ -270,7 +281,7 @@ class UI {
             let project = document.createElement("article");
             project.classList.add("todo-list-project");
             project.setAttribute("data-id", currentProject.id);
-            project.addEventListener("click", () => this.displayProject(currentProject.id));
+            project.addEventListener("click", (e) => this.displayProject(e, currentProject.id));
             
             let projectName = document.createElement("h2");
             projectName.classList.add("todo-list-project-name");
@@ -278,13 +289,23 @@ class UI {
 
             let projectDescription = document.createElement("p");
             projectDescription.classList.add("todo-list-project-description");
-
-            // Leave empty if not description is present
-            // Cut off description length using an ellipsis
+            
             projectDescription.textContent = currentProject.description;
+
+            let projectUpdate = document.createElement("button");
+            projectUpdate.classList.add("todo-list-project-update");
+            projectUpdate.textContent = "Update";
+            projectUpdate.addEventListener("click", () => console.log("Updating..."));
+
+            let projectDelete = document.createElement("button");
+            projectDelete.classList.add("todo-list-project-delete");
+            projectDelete.textContent = "Delete";
+            projectDelete.addEventListener("click", this.deleteProject.bind(currentProject.id));
 
             project.appendChild(projectName);
             project.appendChild(projectDescription);
+            project.appendChild(projectUpdate);
+            project.appendChild(projectDelete);
 
             todoListProjects.appendChild(project);
         }

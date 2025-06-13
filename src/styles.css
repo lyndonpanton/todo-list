@@ -92,6 +92,8 @@ h1 {
 }
 
 .todo-list-project {
+    position: relative;
+
     width: 300px;
     height: 200px;
     /* border: 1px solid lightgrey; */
@@ -125,6 +127,20 @@ h1 {
 
 .todo-list-project-description {
     color: #888888;
+}
+
+.todo-list-project-update {
+    position: absolute;
+
+    bottom: 10px;
+    left: 10px;
+}
+
+.todo-list-project-delete {
+    position: absolute;
+    
+    bottom: 10px;
+    right: 10px;
 }
 
 /* Project */
