@@ -172,6 +172,22 @@ class UI {
                         // todoDueDate.value = todo.dueDate;
 
                         let todoPriority = document.createElement("select");
+                        todoPriority.classList.add("todo-priority");
+                        
+                        for (let i = 0; i < 5; i++) {
+                            let todoPriorityOption = document.createElement("option");
+                            todoPriorityOption.value = (i + 1);
+                            todoPriorityOption.textContent = (i + 1);
+
+                            console.log(todo.getPriority());
+                            if ((i + 1) == todo.getPriority()) todoPriorityOption.selected = true;
+
+                            todoPriorityOption.classList.add("todo-priority-option");
+                            
+                            todoPriority.appendChild(todoPriorityOption);
+                        }
+
+                        todoPriority.addEventListener("click", this.updateEditedTodoPriority.bind(this));
 
                         let todoDescription = document.createElement("textarea");
                         todoDescription.classList.add("todo-description");
@@ -199,12 +215,6 @@ class UI {
                         this.updatedTodoDescription = todo.getDescription();
                         this.updatedTodoDueDate = todo.getDueDate();
                         this.updatedTodoPriority = todo.getPriority();
-
-                        console.log(this.updatedTodoTitle);
-                        console.log(this.updatedTodoIsComplete);
-                        console.log(this.updatedTodoDescription);
-                        console.log(this.updatedTodoDueDate);
-                        console.log(this.updatedTodoPriority);
 
                         document.body.appendChild(todoArea);
 
@@ -284,6 +294,7 @@ class UI {
 
     updateEditedTodoPriority(e) {
         this.updatedTodoPriority = e.target.value;
+        console.log(this.updatedTodoPriority);
     }
 
     updateEditedTodoDescription(e) {
@@ -303,19 +314,9 @@ class UI {
                         // If empty, set to default
                         this.todoList.projects[i].todos[j].setTitle(this.updatedTodoTitle);
                         this.todoList.projects[i].todos[j].setDescription(this.updatedTodoDescription);
-                        this.todoList.projects[i].todos[j].setIsComplete(this.updateEditedTodoIsComplete);
+                        this.todoList.projects[i].todos[j].setIsComplete(this.updatedTodoIsComplete);
                         // this.todoList.projects[i].todos[j].setDueDate(this.updateTodoDueDate);
                         this.todoList.projects[i].todos[j].setPriority(this.updatedTodoPriority);
-
-                        console.log(this.updatedTodoTitle);
-                        console.log(this.updatedTodoIsComplete);
-                        console.log(
-                            this.updatedTodoDueDate.getDate()
-                            + "/" + (this.updatedTodoDueDate.getMonth() + 1)
-                            + "/" + this.updatedTodoDueDate.getFullYear()
-                        );
-                        console.log(this.updatedTodoPriority);
-                        console.log(this.updatedTodoDescription);
 
                         this.updatedTodoTitle = "";
                         this.updatedTodoDescription = "";

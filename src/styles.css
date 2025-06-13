@@ -276,6 +276,10 @@ h1 {
 }
 
 .todo-priority {
+    width: 80px;
+}
+
+.todo-priority-option {
 
 }
 
