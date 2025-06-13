@@ -7,10 +7,11 @@ class TodoList {
 
     addProjectByObject(project) {
         // this.projects = [...this.projects, project];
+        console.log(project);
         this.projects.push(project);
     }
 
-    addProjectByName(name, description) {
+    addProjectByData(name, description) {
         let project = new Project(name, description);
         this.addProjectByObject(project);
     }

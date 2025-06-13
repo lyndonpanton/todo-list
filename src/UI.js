@@ -1,6 +1,3 @@
-import Project from "./Project";
-import Todo from "./Todo";
-
 class UI {
     constructor(todoList) {
         this.todoList = todoList;
@@ -33,9 +30,7 @@ class UI {
     createProject(e) {
         e.preventDefault();
 
-        this.todoList.addProjectByObject(new Project(
-            this.newProjectName, this.newProjectDescription
-        ));
+        this.todoList.addProjectByData(this.newProjectName, this.newProjectDescription);
 
         this.newProjectName = "";
         this.newProjectDescription = "";
@@ -197,8 +192,8 @@ class UI {
                         let todoDueDate = document.createElement("input");
                         todoDueDate.type = "date";
                         todoDueDate.classList.add("todo-due-date");
-                        // Convert to appropriate format
-                        // todoDueDate.value = todo.dueDate;
+                        todoDueDate.valueAsDate = todo.dueDate;
+                        todoDueDate.addEventListener("change", this.updateEditedTodoDueDate.bind(this));
 
                         let todoPriority = document.createElement("select");
                         todoPriority.classList.add("todo-priority");
@@ -208,7 +203,6 @@ class UI {
                             todoPriorityOption.value = (i + 1);
                             todoPriorityOption.textContent = (i + 1);
 
-                            console.log(todo.getPriority());
                             if ((i + 1) == todo.getPriority()) todoPriorityOption.selected = true;
 
                             todoPriorityOption.classList.add("todo-priority-option");
@@ -314,16 +308,14 @@ class UI {
 
     updateEditedTodoIsComplete(e) {
         this.updatedTodoIsComplete = e.target.checked;
-        console.log(this.updatedTodoIsComplete);
     }
-
+    
     updateEditedTodoDueDate(e) {
-        this.updatedTodoDueDate = e.target.value;
+        this.updatedTodoDueDate = e.target.valueAsDate;
     }
 
     updateEditedTodoPriority(e) {
         this.updatedTodoPriority = e.target.value;
-        console.log(this.updatedTodoPriority);
     }
 
     updateEditedTodoDescription(e) {
@@ -344,7 +336,7 @@ class UI {
                         this.todoList.projects[i].todos[j].setTitle(this.updatedTodoTitle);
                         this.todoList.projects[i].todos[j].setDescription(this.updatedTodoDescription);
                         this.todoList.projects[i].todos[j].setIsComplete(this.updatedTodoIsComplete);
-                        // this.todoList.projects[i].todos[j].setDueDate(this.updateTodoDueDate);
+                        this.todoList.projects[i].todos[j].setDueDate(this.updatedTodoDueDate);
                         this.todoList.projects[i].todos[j].setPriority(this.updatedTodoPriority);
 
                         this.updatedTodoTitle = "";

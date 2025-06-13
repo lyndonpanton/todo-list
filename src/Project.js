@@ -1,5 +1,3 @@
-import Todo from "./Todo";
-
 class Project {
     constructor(name, description) {
         this.id = self.crypto.randomUUID();
