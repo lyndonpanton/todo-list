@@ -207,6 +207,13 @@ h1 {
     color: lightgrey;
 }
 
+.project-todo-update {
+    position: absolute;
+    right: 115px;
+
+    display: inline-block;
+}
+
 .project-todo-delete {
     position: absolute;
     right: 15px;

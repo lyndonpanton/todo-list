@@ -99,7 +99,6 @@ class UI {
                     let todo = document.createElement("li");
                     todo.setAttribute("data-id", todos[j].id);
                     todo.classList.add("project-todo");
-                    todo.addEventListener("click", this.displayTodo.bind(this, id, todos[j].id));
 
                     // Checkbox
                     let todoCheckbox = document.createElement("input");
@@ -111,6 +110,12 @@ class UI {
                     todoName.classList.add("project-todo-name");
                     todoName.textContent = todos[j].title;
 
+                    // Update
+                    let todoUpdate = document.createElement("span");
+                    todoUpdate.classList.add("project-todo-update");
+                    todoUpdate.textContent = "Update";
+                    todoUpdate.addEventListener("click", this.displayTodo.bind(this, id, todos[j].id));
+
                     // Delete
                     let todoDelete = document.createElement("span");
                     todoDelete.classList.add("project-todo-delete");
@@ -118,6 +123,7 @@ class UI {
 
                     todo.appendChild(todoCheckbox);
                     todo.appendChild(todoName);
+                    todo.appendChild(todoUpdate);
                     todo.appendChild(todoDelete);
 
                     projectTodos.appendChild(todo);
