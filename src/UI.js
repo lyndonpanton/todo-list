@@ -1,16 +1,31 @@
 import Project from "./Project";
+import Todo from "./Todo";
 
 class UI {
     constructor(todoList) {
         this.todoList = todoList;
         this.main = document.getElementsByTagName("main")[0];
+
         this.newProjectName = "";
         this.newProjectDescription = "";
+
+        this.updatedTodoTitle = "";
+        this.updatedTodoPriority = "";
+        this.updatedTodoDueDate = "";
+        this.updatedTodoDescription = "";
     }
 
     clearDisplay() {
         while (this.main.firstChild) {
             this.main.removeChild(this.main.firstChild);
+        }
+    }
+
+    closeTodoArea() {
+        let todoArea = document.getElementById("todo-area");
+
+        if (todoArea) {
+            todoArea.parentElement.removeChild(todoArea);
         }
     }
 
@@ -54,7 +69,131 @@ class UI {
         this.main.appendChild(form);
     }
 
-    // Contains projects
+    displayProject(id) {
+        this.clearDisplay();
+
+        let projects = this.todoList.projects;
+
+        for (let i = 0; i < projects.length; i++) {
+            if (id === projects[i].id) {
+                let project = document.createElement("section");
+                project.setAttribute("id", "project");
+
+                let projectHeading = document.createElement("h2");
+                projectHeading.classList.add("project-heading");
+                projectHeading.textContent = projects[i].name;
+
+                let backButton = document.createElement("button");
+                backButton.type = "button";
+                backButton.classList.add("project-button-back");
+                backButton.textContent = "<-";
+                backButton.addEventListener("click", this.displayTodoList.bind(this));
+
+                let projectTodos = document.createElement("ul");
+                projectTodos.classList.add("project-todos");
+
+                let todos = projects[i].todos;
+
+                for (let j = 0; j < todos.length; j++) {
+                    let todo = document.createElement("li");
+                    todo.setAttribute("data-id", todos[j].id);
+                    todo.classList.add("project-todo");
+                    todo.addEventListener("click", this.displayTodo.bind(this, id, todos[j].id));
+
+                    // Checkbox
+                    let todoCheckbox = document.createElement("input");
+                    todoCheckbox.setAttribute("type", "checkbox");
+                    todoCheckbox.classList.add("project-todo-checkbox");
+
+                    // Text
+                    let todoName = document.createElement("p");
+                    todoName.classList.add("project-todo-name");
+                    todoName.textContent = todos[j].title;
+
+                    // Delete
+                    let todoDelete = document.createElement("span");
+                    todoDelete.classList.add("project-todo-delete");
+                    todoDelete.textContent = "Delete";
+
+                    todo.appendChild(todoCheckbox);
+                    todo.appendChild(todoName);
+                    todo.appendChild(todoDelete);
+
+                    projectTodos.appendChild(todo);
+                }
+
+                project.appendChild(projectHeading);
+                project.appendChild(backButton);
+                project.appendChild(projectTodos);
+
+                this.main.appendChild(project);
+                break;
+            }
+        }
+    }
+
+    displayTodo(projectId, todoId) {
+        for (let i = 0; i < this.todoList.projects.length; i++) {
+            let project = this.todoList.projects[i];
+
+            if (project.id === projectId) {
+                for (let j = 0; j < project.todos.length; j++) {
+                    let todo = project.todos[j];
+
+                    if (todo.id === todoId) {
+                        let todoArea = document.createElement("section");
+                        todoArea.setAttribute("id", "todo-area");
+
+                        let todoAreaClose = document.createElement("button");
+                        todoAreaClose.type = "button";
+                        todoAreaClose.classList.add("todo-area-close");
+                        todoAreaClose.addEventListener("click", this.closeTodoArea.bind(this));
+
+                        let todoElement = document.createElement("article");
+                        todoElement.classList.add("todo");
+
+                        let todoTitle = document.createElement("input");
+                        todoTitle.type = "text";
+                        todoTitle.value = todo.getTitle();
+                        todoTitle.classList.add("todo-title");
+                        todoTitle.addEventListener("keyup", this.updateNewTodoTitle.bind(this));
+
+                        let todoDueDate = document.createElement("input");
+                        todoDueDate.type = "datetime-local";
+                        todoDueDate.classList.add("todo-due-date");
+                        // Convert to appropriate format
+                        // todoDueDate.value = todo.dueDate;
+
+                        let todoPriority = document.createElement("select");
+
+                        let todoDescription = document.createElement("text-area");
+                        todoDescription.classList.add("todo-description");
+                        todoDescription.textContent = todo.description;
+
+                        let todoModify = document.createElement("button");
+                        todoModify.type = "button";
+                        todoModify.classList.add("todo-modify");
+                        todoModify.addEventListener("click", this.updateTodo.bind(this, projectId, todoId));
+                        todoModify.textContent = "Update";
+
+                        todoElement.appendChild(todoTitle);
+                        todoElement.appendChild(todoDueDate);
+                        todoElement.appendChild(todoPriority);
+                        todoElement.appendChild(todoDescription);
+                        todoElement.appendChild(todoModify);
+
+                        todoArea.appendChild(todoAreaClose);
+                        todoArea.appendChild(todoElement);
+
+                        document.body.appendChild(todoArea);
+
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
     displayTodoList() {
         this.clearDisplay();
 
@@ -101,80 +240,71 @@ class UI {
         this.main.appendChild(todoList);
     }
 
-    // Contains todos
-    displayProject(id) {
-        this.clearDisplay();
-
-        let projects = this.todoList.projects;
-
-        for (let i = 0; i < projects.length; i++) {
-            if (id === projects[i].id) {
-                let project = document.createElement("section");
-                project.setAttribute("id", "project");
-
-                let projectHeading = document.createElement("h2");
-                projectHeading.classList.add("project-heading");
-                projectHeading.textContent = projects[i].name;
-
-                let backButton = document.createElement("button");
-                backButton.type = "button";
-                backButton.classList.add("project-button-back");
-                backButton.textContent = "<-";
-                backButton.addEventListener("click", this.displayTodoList.bind(this));
-
-                let projectTodos = document.createElement("ul");
-                projectTodos.classList.add("project-todos");
-
-                let todos = projects[i].todos;
-
-                for (let j = 0; j < todos.length; j++) {
-                    let todo = document.createElement("li");
-                    todo.setAttribute("data-id", todos[j].id);
-                    todo.classList.add("project-todo");
-
-                    // Checkbox
-                    let todoCheckbox = document.createElement("input");
-                    todoCheckbox.setAttribute("type", "checkbox");
-                    todoCheckbox.classList.add("project-todo-checkbox");
-
-                    // Text
-                    let todoName = document.createElement("p");
-                    todoName.classList.add("project-todo-name");
-                    todoName.textContent = todos[j].title;
-
-                    // Delete
-                    let todoDelete = document.createElement("span");
-                    todoDelete.classList.add("project-todo-delete");
-                    todoDelete.textContent = "Delete";
-
-                    todo.appendChild(todoCheckbox);
-                    todo.appendChild(todoName);
-                    todo.appendChild(todoDelete);
-
-                    projectTodos.appendChild(todo);
-                }
-
-                project.appendChild(projectHeading);
-                project.appendChild(backButton);
-                project.appendChild(projectTodos);
-
-                this.main.appendChild(project);
-                break;
-            }
-        }
-    }
-
-    // Contains todo data
-    displayTodo(id) {
-
-    }
-
     updateNewProjectName(e) {
         this.newProjectName = e.target.value;
     }
     
     updateNewProjectDescription(e) {
         this.newProjectDescription = e.target.value;
+    }
+
+    updateNewTodoTitle(e) {
+        this.updatedTodoTitle = e.target.value;
+    }
+
+    updateNewTodoDueDate(e) {
+        this.updatedTodoDueDate = e.target.value;
+        console.log(this.updatedTodoDueDate);
+    }
+
+    updateNewTodoPriority(e) {
+        this.updatedTodoPriority = e.target.value;
+        console.log(this.updatedTodoPriority);
+    }
+
+    updateNewTodoDescription(e) {
+        this.updatedTodoDescription = e.target.value;
+        console.log(this.updatedTodoDescription);
+    }
+
+    updateTodo(projectId, todoId) {
+        let todoFound = false;
+        for (let i = 0; i < this.todoList.projects.length; i++) {
+            let project = this.todoList.projects[i];
+
+            if (project.id === projectId) {
+                for (let j = 0; j < project.todos.length; j++) {
+                    let todo = project.todos[j];
+
+                    if (todo.id === todoId) {
+                        // If empty, set to default
+                        // this.todoList.projects[i].todos.push(new Todo(
+                        //     this.updatedTodoTitle,
+                        //     this.updatedTodoDescription,
+                        //     false,
+                        //     this.updatedTodoDueDate,
+                        //     this.updatedTodoPriority,
+                        // ));
+
+                        this.updatedTodoTitle = "";
+                        this.updatedTodoDescription = "";
+                        this.updatedTodoDueDate = "";
+                        this.updatedTodoPriority = "";
+
+                        console.log(this.updatedTodoTitle);
+                        console.log(this.updatedTodoDescription);
+                        console.log(this.updatedTodoDueDate);
+                        console.log(this.updatedTodoPriority);
+
+                        this.closeTodoArea();
+
+                        break;
+                    }
+                }
+            }
+
+            if (todoFound) break;
+        }
     }
 }
 

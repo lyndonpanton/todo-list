@@ -138,7 +138,7 @@ h1 {
 }
 
 .project-button-back {
-    
+
 }
 
 .project-todos {
@@ -215,5 +215,54 @@ h1 {
 }
 
 /* Todo */
+#todo-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    background-color: rgba(240, 240, 240, 0.5);
+}
+
+.todo-area-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.todo {
+    width: 60%;
+    height: 40%;
+
+    background-color: red;
+}
+
+.todo-row-top {
+    display: grid;
+    grid-template-columns: 8fr 1fr 1fr;
+}
+
+.todo-title {
+
+}
+
+.todo-description {
+    width: 80%;
+    height: 40%;
+}
+
+.todo-due-date {
+
+}
+
+.todo-priority {
+
+}
+
+.todo-modify {
+
+}
 
 /* Footer */
