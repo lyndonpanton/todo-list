@@ -1,11 +1,14 @@
 import "./styles.css";
 
+import Header from "./Header";
 import TodoList from "./TodoList";
 import Project from "./Project";
 import Todo from "./Todo";
 import UI from "./UI";
 
 console.log("Webpack has been configured successfully");
+
+let header = new Header("Todo List");
 
 let todoList = new TodoList();
 let ui = new UI(todoList);
@@ -27,4 +30,5 @@ project2.addTodo(new Todo("Go to football", "5-a-side on Thursday", false, new D
 todoList.addProjectByObject(project1);
 todoList.addProjectByObject(project2);
 
+header.displayHeader();
 ui.displayTodoList();

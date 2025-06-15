@@ -13,6 +13,9 @@ A list of tasks for this project.
 - [x] Users should be able to update individual todos
 - [ ] Users should be able to exit individual todos without updating them
 - [x] Users should be able to delete individual todos
+- [ ] Template elements should be rendered using JavaScript
+    - [ ] Header
+    - [ ] Footer
 - [ ] Users should be able to update projects
     - [ ] From todo list view
     - [ ] From project view
