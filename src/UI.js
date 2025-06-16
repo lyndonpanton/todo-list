@@ -6,6 +6,12 @@ class UI {
         this.newProjectName = "";
         this.newProjectDescription = "";
 
+        this.newTodoTitle = "";
+        this.newTodoIsComplete = false;
+        this.newTodoPriority = 5;
+        this.newTodoDueDate = "";
+        this.newTodoDescription = "";
+
         this.updatedTodoTitle = "";
         this.updatedTodoIsComplete = "";
         this.updatedTodoPriority = "";
@@ -16,6 +22,14 @@ class UI {
     clearDisplay() {
         while (this.main.firstChild) {
             this.main.removeChild(this.main.firstChild);
+        }
+    }
+
+    closeNewTodoArea() {
+        let newTodoArea = document.getElementById("new-todo-area");
+
+        if (newTodoArea) {
+            newTodoArea.parentElement.removeChild(newTodoArea);
         }
     }
 
@@ -36,6 +50,25 @@ class UI {
         this.newProjectDescription = "";
 
         this.displayTodoList();
+    }
+
+    createTodo(e, projectId) {
+        e.preventDefault();
+        // console.log(e);
+        // console.log(projectId);
+        // Generate todo id
+
+        let id = self.crypto.randomUUID();
+
+        this.newTodoTitle = "";
+        this.newTodoIsComplete = "";
+        this.newTodoDueDate = "";
+        this.newTodoPriority = "";
+        this.newTodoDescription = "";
+
+        console.log(`Create new todo (${id}) in project: ${projectId}`);
+        this.closeNewTodoArea();
+        this.displayProject(null, projectId);
     }
 
     deleteProject(projectId) {
@@ -90,7 +123,6 @@ class UI {
 
         let submitButton = document.createElement("button");
         submitButton.type = "submit";
-        // submitButton.classList.add("");
         submitButton.textContent = "Create";
 
         form.appendChild(projectName);
@@ -98,6 +130,57 @@ class UI {
         form.appendChild(submitButton);
         
         this.main.appendChild(form);
+    }
+
+    displayNewTodoArea(projectId) {
+        let newTodoArea = document.createElement("section");
+        newTodoArea.setAttribute("id", "new-todo-area");
+
+        console.log(projectId);
+
+        let newTodoForm = document.createElement("form");
+        newTodoForm.addEventListener("submit", (e) => this.createTodo(e, projectId));
+
+        let newTodoTitle = document.createElement("input");
+        newTodoTitle.classList.add("new-todo-title");
+        newTodoTitle.type = "text";
+
+        let newTodoIsComplete = document.createElement("input");
+        newTodoIsComplete.classList.add("new-todo-is-complete");
+        newTodoIsComplete.type = "checkbox";
+
+        let newTodoDueDate = document.createElement("input");
+        newTodoDueDate.classList.add("new-todo-due-date");
+        newTodoDueDate.type = "date";
+
+        let newTodoPriority = document.createElement("select");
+        newTodoPriority.classList.add("new-todo-priority");
+
+        for (let i = 0; i < 5; i++) {
+            let newTodoPriorityOption = document.createElement("option");
+            newTodoPriorityOption.textContent = (i + 1);
+            newTodoPriorityOption.value = (i + 1);
+
+            newTodoPriority.appendChild(newTodoPriorityOption);
+        }
+
+        let newTodoDescription = document.createElement("textarea");
+        newTodoDescription.classList.add("new-todo-description");
+
+        let newTodoSubmit = document.createElement("input");
+        newTodoSubmit.classList.add("new-todo-submit")
+        newTodoSubmit.type = "submit";
+
+        newTodoForm.appendChild(newTodoTitle);
+        newTodoForm.appendChild(newTodoIsComplete);
+        newTodoForm.appendChild(newTodoDueDate);
+        newTodoForm.appendChild(newTodoPriority);
+        newTodoForm.appendChild(newTodoDescription);
+        newTodoForm.appendChild(newTodoSubmit);
+
+        newTodoArea.appendChild(newTodoForm);
+
+        this.main.appendChild(newTodoArea);
     }
 
     displayProject(e, id) {
@@ -127,9 +210,10 @@ class UI {
 
                 // New Todo Button
                 let projectNewTodoButton = document.createElement("button");
-                projectNewTodoButton.type = "button";
                 projectNewTodoButton.classList.add("project-new-todo-button");
                 projectNewTodoButton.textContent = "+";
+                projectNewTodoButton.type = "button";
+                projectNewTodoButton.addEventListener("click", this.displayNewTodoArea.bind(this, id));
 
                 // Back Button
                 let backButton = document.createElement("button");
@@ -180,6 +264,7 @@ class UI {
                 }
 
                 project.appendChild(projectHeading);
+                project.appendChild(projectNewTodoButton);
                 project.appendChild(backButton);
                 project.appendChild(projectTodos);
 
