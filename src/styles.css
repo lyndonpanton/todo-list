@@ -315,4 +315,21 @@ h1 {
 
 }
 
+/* New Project */
+
+/* New Todo */
+#new-todo-area {
+    position: relative;
+    
+    background-color: lightblue;
+}
+
+.new-todo-area-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    font-size: 3rem;
+}
+
 /* Footer */

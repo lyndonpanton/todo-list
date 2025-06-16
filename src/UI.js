@@ -26,11 +26,11 @@ class UI {
         }
     }
 
-    closeNewTodoArea() {
-        let newTodoArea = document.getElementById("new-todo-area");
+    closeNewTodoArea(area) {
+        // let newTodoArea = document.getElementById("new-todo-area");
 
-        if (newTodoArea) {
-            newTodoArea.parentElement.removeChild(newTodoArea);
+        if (area) {
+            area.parentElement.removeChild(area);
         }
     }
 
@@ -144,6 +144,12 @@ class UI {
         let newTodoArea = document.createElement("section");
         newTodoArea.setAttribute("id", "new-todo-area");
 
+        let newTodoAreaClose = document.createElement("button");
+        newTodoAreaClose.classList.add("new-todo-area-close");
+        newTodoAreaClose.textContent = "x";
+        newTodoAreaClose.type = "button";
+        newTodoAreaClose.addEventListener("click", () => this.closeNewTodoArea(newTodoArea));
+
         let newTodoForm = document.createElement("form");
         newTodoForm.addEventListener("submit", this.createTodo.bind(this, projectId));
 
@@ -188,6 +194,7 @@ class UI {
         newTodoForm.appendChild(newTodoDescription);
         newTodoForm.appendChild(newTodoSubmit);
 
+        newTodoArea.appendChild(newTodoAreaClose);
         newTodoArea.appendChild(newTodoForm);
 
         this.main.appendChild(newTodoArea);

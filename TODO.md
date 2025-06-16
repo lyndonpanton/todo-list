@@ -12,6 +12,7 @@ A list of tasks for this project.
 - [x] Users should be able to view individual todos
 - [x] Users should be able to update individual todos
 - [ ] Users should be able to exit individual todos without updating them
+- [ ] Users should be able to exit new todo dialog without creating a todo
 - [x] Users should be able to delete individual todos
 - [ ] Template elements should be rendered using JavaScript
     - [ ] Header
@@ -21,7 +22,7 @@ A list of tasks for this project.
     - [ ] From project view
 - [ ] Users should be able to delete projects
     - [x] From todo list view
-    - [ ] From project project view
+    - [ ] From project view
 - [x] Users should be able to create todos
     - [x] Title
     - [x] Description
@@ -69,5 +70,9 @@ application
     - [ ] By priority
 - [ ] Project descriptions should be cut off with an ellipsis if they are too
 long
+
+#### Maintenance
+
+- [ ] Methods to close a dialog should use the same function
 
 ### Bugs
