@@ -17,7 +17,7 @@ A list of tasks for this project.
 - [ ] Template elements should be rendered using JavaScript
     - [ ] Header
     - [ ] Footer
-- [ ] Users should be able to update projects
+- [x] Users should be able to update projects
     - [x] From todo list view
     - [x] From project view
 - [ ] Users should be able to delete projects
