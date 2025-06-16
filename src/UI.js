@@ -101,32 +101,44 @@ class UI {
     }
 
     displayProject(e, id) {
-        if (
-            e.target.classList.contains("todo-list-project-update")
-            || e.target.classList.contains("todo-list-project-delete")
-        ) {
-            return;
+        if (e !== null) {
+            if (
+                e.target.classList.contains("todo-list-project-update")
+                || e.target.classList.contains("todo-list-project-delete")
+            ) {
+                return;
+            }
         }
-
+        
         this.clearDisplay();
 
         let projects = this.todoList.projects;
 
         for (let i = 0; i < projects.length; i++) {
             if (id === projects[i].id) {
+                // Container
                 let project = document.createElement("section");
                 project.setAttribute("id", "project");
 
+                // Header
                 let projectHeading = document.createElement("h2");
                 projectHeading.classList.add("project-heading");
                 projectHeading.textContent = projects[i].name;
 
+                // New Todo Button
+                let projectNewTodoButton = document.createElement("button");
+                projectNewTodoButton.type = "button";
+                projectNewTodoButton.classList.add("project-new-todo-button");
+                projectNewTodoButton.textContent = "+";
+
+                // Back Button
                 let backButton = document.createElement("button");
                 backButton.type = "button";
                 backButton.classList.add("project-button-back");
                 backButton.textContent = "<-";
                 backButton.addEventListener("click", this.displayTodoList.bind(this));
 
+                // Todo List
                 let projectTodos = document.createElement("ul");
                 projectTodos.classList.add("project-todos");
 
@@ -354,6 +366,7 @@ class UI {
 
     updateTodo(projectId, todoId) {
         let todoFound = false;
+
         for (let i = 0; i < this.todoList.projects.length; i++) {
             let project = this.todoList.projects[i];
 
@@ -376,7 +389,7 @@ class UI {
                         this.updatedTodoPriority = "";
 
                         this.closeTodoArea();
-                        this.displayProject(projectId);
+                        this.displayProject(null, projectId);
 
                         break;
                     }
