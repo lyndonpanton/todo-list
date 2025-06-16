@@ -22,11 +22,11 @@ A list of tasks for this project.
 - [ ] Users should be able to delete projects
     - [x] From todo list view
     - [ ] From project project view
-- [ ] Users should be able to create todos
-    - [ ] Title
-    - [ ] Description
-    - [ ] Due date
-    - [ ] Priority
+- [x] Users should be able to create todos
+    - [x] Title
+    - [x] Description
+    - [x] Due date
+    - [x] Priority
 - [ ] Project view should display the following information for todos
     - [x] Title
     - [ ] Due date

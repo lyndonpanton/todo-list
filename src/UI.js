@@ -1,3 +1,5 @@
+import Todo from "./Todo";
+
 class UI {
     constructor(todoList) {
         this.todoList = todoList;
@@ -7,15 +9,14 @@ class UI {
         this.newProjectDescription = "";
 
         this.newTodoTitle = "";
-        this.newTodoIsComplete = false;
         this.newTodoPriority = 5;
-        this.newTodoDueDate = "";
+        this.newTodoDueDate = new Date();
         this.newTodoDescription = "";
 
         this.updatedTodoTitle = "";
         this.updatedTodoIsComplete = "";
         this.updatedTodoPriority = "";
-        this.updatedTodoDueDate = "";
+        this.updatedTodoDueDate = new Date();
         this.updatedTodoDescription = "";
     }
 
@@ -52,21 +53,28 @@ class UI {
         this.displayTodoList();
     }
 
-    createTodo(e, projectId) {
+    createTodo(projectId, e) {
         e.preventDefault();
-        // console.log(e);
-        // console.log(projectId);
-        // Generate todo id
 
-        let id = self.crypto.randomUUID();
+        for (let i = 0; i < this.todoList.projects.length; i++) {
+            let project = this.todoList.projects[i];
+
+            if (project.id === projectId) {
+                this.todoList.projects[i].addTodo(new Todo(
+                    this.newTodoTitle,
+                    this.newTodoDescription,
+                    false,
+                    this.newTodoDueDate,
+                    this.newTodoPriority
+                ));
+            }
+        }
 
         this.newTodoTitle = "";
-        this.newTodoIsComplete = "";
-        this.newTodoDueDate = "";
-        this.newTodoPriority = "";
+        this.newTodoDueDate = 5;
+        this.newTodoPriority = new Date();
         this.newTodoDescription = "";
 
-        console.log(`Create new todo (${id}) in project: ${projectId}`);
         this.closeNewTodoArea();
         this.displayProject(null, projectId);
     }
@@ -136,14 +144,13 @@ class UI {
         let newTodoArea = document.createElement("section");
         newTodoArea.setAttribute("id", "new-todo-area");
 
-        console.log(projectId);
-
         let newTodoForm = document.createElement("form");
-        newTodoForm.addEventListener("submit", (e) => this.createTodo(e, projectId));
+        newTodoForm.addEventListener("submit", this.createTodo.bind(this, projectId));
 
         let newTodoTitle = document.createElement("input");
         newTodoTitle.classList.add("new-todo-title");
         newTodoTitle.type = "text";
+        newTodoTitle.addEventListener("keyup", this.updateNewTodoTitle.bind(this));
 
         let newTodoIsComplete = document.createElement("input");
         newTodoIsComplete.classList.add("new-todo-is-complete");
@@ -152,9 +159,11 @@ class UI {
         let newTodoDueDate = document.createElement("input");
         newTodoDueDate.classList.add("new-todo-due-date");
         newTodoDueDate.type = "date";
+        newTodoDueDate.addEventListener("change", this.updateNewTodoDueDate.bind(this));
 
         let newTodoPriority = document.createElement("select");
         newTodoPriority.classList.add("new-todo-priority");
+        newTodoPriority.addEventListener("click", this.updateNewTodoPriority.bind(this));
 
         for (let i = 0; i < 5; i++) {
             let newTodoPriorityOption = document.createElement("option");
@@ -166,9 +175,10 @@ class UI {
 
         let newTodoDescription = document.createElement("textarea");
         newTodoDescription.classList.add("new-todo-description");
+        newTodoDescription.addEventListener("keyup", this.updateNewTodoDescription.bind(this));
 
         let newTodoSubmit = document.createElement("input");
-        newTodoSubmit.classList.add("new-todo-submit")
+        newTodoSubmit.classList.add("new-todo-submit");
         newTodoSubmit.type = "submit";
 
         newTodoForm.appendChild(newTodoTitle);
@@ -421,6 +431,18 @@ class UI {
         this.main.appendChild(todoList);
     }
 
+    updateNewTodoDescription(e) {
+        this.newTodoDescription = e.target.value;}
+
+    updateNewTodoDueDate(e) {
+        this.newTodoDueDate = e.target.valueAsDate;}
+
+    updateNewTodoPriority(e) {
+        this.newTodoPriority = e.target.value;}
+    
+    updateNewTodoTitle(e) {
+        this.newTodoTitle = e.target.value;}
+
     updateNewProjectName(e) {
         this.newProjectName = e.target.value;
     }
@@ -470,7 +492,7 @@ class UI {
                         this.updatedTodoTitle = "";
                         this.updatedTodoDescription = "";
                         this.updatedTodoIsComplete = false;
-                        this.updatedTodoDueDate = "";
+                        this.updatedTodoDueDate = new Date();
                         this.updatedTodoPriority = "";
 
                         this.closeTodoArea();
