@@ -20,9 +20,9 @@ A list of tasks for this project.
 - [x] Users should be able to update projects
     - [x] From todo list view
     - [x] From project view
-- [ ] Users should be able to delete projects
+- [x] Users should be able to delete projects
     - [x] From todo list view
-    - [ ] From project view
+    - [x] From project view
 - [ ] When updating data (e.g., todo, project), the state variables should
 initially set to the current data (otherwise immediate submission causes issues)
 - [ ] When updating data (e.g., todo, project), the user should always be sent
@@ -41,12 +41,13 @@ back to the previous interface after submission
         - Cyan
     - [x] Update button
     - [x] Delete button
+- [ ] The application should have data persistence
 - [ ] Use icons for certain buttons
     - [ ] Update project in todo list view
     - [ ] Delete project in todo list view
     - [ ] Update todo in project view
     - [ ] Delete todo in project view
-- [ ] The application should have data persistence
+- [ ] Style application
 
 ### Additional
 

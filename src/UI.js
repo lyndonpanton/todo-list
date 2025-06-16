@@ -242,11 +242,19 @@ class UI {
                 backButton.textContent = "<-";
                 backButton.addEventListener("click", this.displayTodoList.bind(this));
 
+                // Edit Button
                 let editButton = document.createElement("button");
                 editButton.type = "button";
                 editButton.classList.add("project-button-edit");
                 editButton.textContent = "Edit";
                 editButton.addEventListener("click", this.displayProjectUpdateDialog.bind(this, id));
+
+                // Delete Button
+                let deleteButton = document.createElement("button");
+                deleteButton.type = "button";
+                deleteButton.classList.add("project-button-delete");
+                deleteButton.textContent = "Delete";
+                deleteButton.addEventListener("click", this.deleteProject.bind(this, id));
 
                 // Todo List
                 let projectTodos = document.createElement("ul");
@@ -293,6 +301,7 @@ class UI {
                 project.appendChild(projectNewTodoButton);
                 project.appendChild(backButton);
                 project.appendChild(editButton);
+                project.appendChild(deleteButton);
                 project.appendChild(projectTodos);
 
                 this.main.appendChild(project);
