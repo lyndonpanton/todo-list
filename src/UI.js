@@ -295,42 +295,52 @@ class UI {
     }
 
     displayProjectUpdateDialog(id) {
-        let projectArea = document.createElement("section");
-        projectArea.setAttribute("id", "project-area");
+        for (let i = 0; i < this.todoList.projects.length; i++) {
+            let project = this.todoList.projects[i];
 
-        let projectAreaClose = document.createElement("button");
-        projectAreaClose.textContent = "x";
-        projectAreaClose.setAttribute("type", "button");
-        projectAreaClose.addEventListener("click", () => this.closeArea(projectArea));
+            if (project.id === id) {
+                console.log(`Project name: ${this.todoList.projects[i].name}`);
+                console.log(`Project description: ${this.todoList.projects[i].description}`);
+                let projectArea = document.createElement("section");
+                projectArea.setAttribute("id", "project-area");
 
-        let projectForm = document.createElement("form");
-        projectForm.classList.add("project-form");
-        projectForm.addEventListener("submit", this.updateProject.bind(this, id));
+                let projectAreaClose = document.createElement("button");
+                projectAreaClose.textContent = "x";
+                projectAreaClose.setAttribute("type", "button");
+                projectAreaClose.addEventListener("click", () => this.closeArea(projectArea));
 
-        let projectFormName = document.createElement("input");
-        projectFormName.classList.add("project-form-name");
-        projectFormName.setAttribute("type", "text");
-        projectFormName.addEventListener("keydown", this.updateEditedProjectName.bind(this));
-        projectFormName.addEventListener("keyup", this.updateEditedProjectName.bind(this));
+                let projectForm = document.createElement("form");
+                projectForm.classList.add("project-form");
+                projectForm.addEventListener("submit", this.updateProject.bind(this, id));
 
-        let projectFormDescription = document.createElement("textarea");
-        projectFormDescription.classList.add("project-form-description");
-        projectFormDescription.addEventListener("keydown", this.updateEditedProjectDescription.bind(this));
-        projectFormDescription.addEventListener("keyup", this.updateEditedProjectDescription.bind(this));
+                let projectFormName = document.createElement("input");
+                projectFormName.classList.add("project-form-name");
+                projectFormName.setAttribute("type", "text");
+                projectFormName.value = this.todoList.projects[i].name;
+                projectFormName.addEventListener("keydown", this.updateEditedProjectName.bind(this));
+                projectFormName.addEventListener("keyup", this.updateEditedProjectName.bind(this));
+                
+                let projectFormDescription = document.createElement("textarea");
+                projectFormDescription.classList.add("project-form-description");
+                projectFormDescription.value = this.todoList.projects[i].description;
+                projectFormDescription.addEventListener("keydown", this.updateEditedProjectDescription.bind(this));
+                projectFormDescription.addEventListener("keyup", this.updateEditedProjectDescription.bind(this));
 
-        let projectFormSubmit = document.createElement("input");
-        projectFormSubmit.classList.add("project-form-submit");
-        projectFormSubmit.setAttribute("type", "submit");
-        projectFormSubmit.value = "Update";
+                let projectFormSubmit = document.createElement("input");
+                projectFormSubmit.classList.add("project-form-submit");
+                projectFormSubmit.setAttribute("type", "submit");
+                projectFormSubmit.value = "Update";
 
-        projectForm.appendChild(projectFormName);
-        projectForm.appendChild(projectFormDescription);
-        projectForm.appendChild(projectFormSubmit);
-        
-        projectArea.appendChild(projectAreaClose);
-        projectArea.appendChild(projectForm);
+                projectForm.appendChild(projectFormName);
+                projectForm.appendChild(projectFormDescription);
+                projectForm.appendChild(projectFormSubmit);
+                
+                projectArea.appendChild(projectAreaClose);
+                projectArea.appendChild(projectForm);
 
-        this.main.appendChild(projectArea);
+                this.main.appendChild(projectArea);
+            }
+        }
     }
 
     displayTodo(projectId, todoId) {

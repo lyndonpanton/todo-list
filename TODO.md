@@ -18,7 +18,7 @@ A list of tasks for this project.
     - [ ] Header
     - [ ] Footer
 - [ ] Users should be able to update projects
-    - [ ] From todo list view
+    - [x] From todo list view
     - [ ] From project view
 - [ ] Users should be able to delete projects
     - [x] From todo list view
