@@ -230,7 +230,7 @@ class UI {
 
                 // New Todo Button
                 let projectNewTodoButton = document.createElement("button");
-                projectNewTodoButton.classList.add("project-new-todo-button");
+                projectNewTodoButton.classList.add("project-button-new");
                 projectNewTodoButton.textContent = "+";
                 projectNewTodoButton.type = "button";
                 projectNewTodoButton.addEventListener("click", this.displayNewTodoArea.bind(this, id));
@@ -241,6 +241,12 @@ class UI {
                 backButton.classList.add("project-button-back");
                 backButton.textContent = "<-";
                 backButton.addEventListener("click", this.displayTodoList.bind(this));
+
+                let editButton = document.createElement("button");
+                editButton.type = "button";
+                editButton.classList.add("project-button-edit");
+                editButton.textContent = "Edit";
+                editButton.addEventListener("click", this.displayProjectUpdateDialog.bind(this, id));
 
                 // Todo List
                 let projectTodos = document.createElement("ul");
@@ -286,6 +292,7 @@ class UI {
                 project.appendChild(projectHeading);
                 project.appendChild(projectNewTodoButton);
                 project.appendChild(backButton);
+                project.appendChild(editButton);
                 project.appendChild(projectTodos);
 
                 this.main.appendChild(project);
@@ -299,8 +306,9 @@ class UI {
             let project = this.todoList.projects[i];
 
             if (project.id === id) {
-                console.log(`Project name: ${this.todoList.projects[i].name}`);
-                console.log(`Project description: ${this.todoList.projects[i].description}`);
+                this.updatedProjectName = this.todoList.projects[i].name;
+                this.updatedProjectDescription = this.todoList.projects[i].description;
+                
                 let projectArea = document.createElement("section");
                 projectArea.setAttribute("id", "project-area");
 

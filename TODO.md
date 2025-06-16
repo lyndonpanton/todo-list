@@ -19,13 +19,14 @@ A list of tasks for this project.
     - [ ] Footer
 - [ ] Users should be able to update projects
     - [x] From todo list view
-    - [ ] From project view
+    - [x] From project view
 - [ ] Users should be able to delete projects
     - [x] From todo list view
     - [ ] From project view
 - [ ] When updating data (e.g., todo, project), the state variables should
 initially set to the current data (otherwise immediate submission causes issues)
-
+- [ ] When updating data (e.g., todo, project), the user should always be sent
+back to the previous interface after submission
 - [x] Users should be able to create todos
     - [x] Title
     - [x] Description
