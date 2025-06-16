@@ -332,4 +332,17 @@ h1 {
     font-size: 3rem;
 }
 
+/* Update Todo */
+#todo-area {
+    position: relative;
+}
+
+.todo-area-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    font-size: 3rem;
+}
+
 /* Footer */

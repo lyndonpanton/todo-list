@@ -304,9 +304,10 @@ class UI {
                         todoArea.setAttribute("id", "todo-area");
 
                         let todoAreaClose = document.createElement("button");
+                        todoAreaClose.textContent = "x";
                         todoAreaClose.type = "button";
                         todoAreaClose.classList.add("todo-area-close");
-                        todoAreaClose.addEventListener("click", this.closeTodoArea.bind(this));
+                        todoAreaClose.addEventListener("click", () => this.closeTodoArea(todoArea));
 
                         let todoElement = document.createElement("article");
                         todoElement.classList.add("todo");
@@ -354,7 +355,7 @@ class UI {
                         let todoModify = document.createElement("button");
                         todoModify.type = "button";
                         todoModify.classList.add("todo-modify");
-                        todoModify.addEventListener("click", this.updateTodo.bind(this, projectId, todoId));
+                        todoModify.addEventListener("click", this.updateTodo.bind(this, projectId, todoId, todoArea));
                         todoModify.textContent = "Update";
 
                         todoElement.appendChild(todoTitle);
@@ -478,7 +479,7 @@ class UI {
         this.updatedTodoDescription = e.target.value;
     }
 
-    updateTodo(projectId, todoId) {
+    updateTodo(projectId, todoId, todoArea) {
         let todoFound = false;
 
         for (let i = 0; i < this.todoList.projects.length; i++) {
@@ -502,7 +503,7 @@ class UI {
                         this.updatedTodoDueDate = new Date();
                         this.updatedTodoPriority = "";
 
-                        this.closeTodoArea();
+                        this.closeTodoArea(todoArea);
                         this.displayProject(null, projectId);
 
                         break;
