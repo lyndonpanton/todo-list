@@ -11,8 +11,8 @@ A list of tasks for this project.
 - [x] Users should be able to go back to the todo list page from a project
 - [x] Users should be able to view individual todos
 - [x] Users should be able to update individual todos
-- [ ] Users should be able to exit individual todos without updating them
-- [ ] Users should be able to exit new todo dialog without creating a todo
+- [x] Users should be able to exit exiting todo dialog without updating a todo
+- [x] Users should be able to exit new todo dialog without creating a todo
 - [x] Users should be able to delete individual todos
 - [ ] Template elements should be rendered using JavaScript
     - [ ] Header
@@ -23,6 +23,9 @@ A list of tasks for this project.
 - [ ] Users should be able to delete projects
     - [x] From todo list view
     - [ ] From project view
+- [ ] When updating data (e.g., todo, project), the state variables should
+initially set to the current data (otherwise immediate submission causes issues)
+
 - [x] Users should be able to create todos
     - [x] Title
     - [x] Description

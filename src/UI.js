@@ -8,6 +8,9 @@ class UI {
         this.newProjectName = "";
         this.newProjectDescription = "";
 
+        this.updatedProjectName = "";
+        this.updatedProjectDescription = "";
+
         this.newTodoTitle = "";
         this.newTodoPriority = 5;
         this.newTodoDueDate = new Date();
@@ -26,7 +29,7 @@ class UI {
         }
     }
 
-    closeNewTodoArea(area) {
+    closeArea(area) {
         // let newTodoArea = document.getElementById("new-todo-area");
 
         if (area) {
@@ -75,7 +78,7 @@ class UI {
         this.newTodoPriority = new Date();
         this.newTodoDescription = "";
 
-        this.closeNewTodoArea();
+        this.closeTodoArea();
         this.displayProject(null, projectId);
     }
 
@@ -148,7 +151,7 @@ class UI {
         newTodoAreaClose.classList.add("new-todo-area-close");
         newTodoAreaClose.textContent = "x";
         newTodoAreaClose.type = "button";
-        newTodoAreaClose.addEventListener("click", () => this.closeNewTodoArea(newTodoArea));
+        newTodoAreaClose.addEventListener("click", () => this.closeArea(newTodoArea));
 
         let newTodoForm = document.createElement("form");
         newTodoForm.addEventListener("submit", this.createTodo.bind(this, projectId));
@@ -291,6 +294,45 @@ class UI {
         }
     }
 
+    displayProjectUpdateDialog(id) {
+        let projectArea = document.createElement("section");
+        projectArea.setAttribute("id", "project-area");
+
+        let projectAreaClose = document.createElement("button");
+        projectAreaClose.textContent = "x";
+        projectAreaClose.setAttribute("type", "button");
+        projectAreaClose.addEventListener("click", () => this.closeArea(projectArea));
+
+        let projectForm = document.createElement("form");
+        projectForm.classList.add("project-form");
+        projectForm.addEventListener("submit", this.updateProject.bind(this, id));
+
+        let projectFormName = document.createElement("input");
+        projectFormName.classList.add("project-form-name");
+        projectFormName.setAttribute("type", "text");
+        projectFormName.addEventListener("keydown", this.updateEditedProjectName.bind(this));
+        projectFormName.addEventListener("keyup", this.updateEditedProjectName.bind(this));
+
+        let projectFormDescription = document.createElement("textarea");
+        projectFormDescription.classList.add("project-form-description");
+        projectFormDescription.addEventListener("keydown", this.updateEditedProjectDescription.bind(this));
+        projectFormDescription.addEventListener("keyup", this.updateEditedProjectDescription.bind(this));
+
+        let projectFormSubmit = document.createElement("input");
+        projectFormSubmit.classList.add("project-form-submit");
+        projectFormSubmit.setAttribute("type", "submit");
+        projectFormSubmit.value = "Update";
+
+        projectForm.appendChild(projectFormName);
+        projectForm.appendChild(projectFormDescription);
+        projectForm.appendChild(projectFormSubmit);
+        
+        projectArea.appendChild(projectAreaClose);
+        projectArea.appendChild(projectForm);
+
+        this.main.appendChild(projectArea);
+    }
+
     displayTodo(projectId, todoId) {
         for (let i = 0; i < this.todoList.projects.length; i++) {
             let project = this.todoList.projects[i];
@@ -307,7 +349,7 @@ class UI {
                         todoAreaClose.textContent = "x";
                         todoAreaClose.type = "button";
                         todoAreaClose.classList.add("todo-area-close");
-                        todoAreaClose.addEventListener("click", () => this.closeTodoArea(todoArea));
+                        todoAreaClose.addEventListener("click", () => this.closeArea(todoArea));
 
                         let todoElement = document.createElement("article");
                         todoElement.classList.add("todo");
@@ -419,7 +461,7 @@ class UI {
             let projectUpdate = document.createElement("button");
             projectUpdate.classList.add("todo-list-project-update");
             projectUpdate.textContent = "Update";
-            projectUpdate.addEventListener("click", () => console.log("Updating..."));
+            projectUpdate.addEventListener("click", this.displayProjectUpdateDialog.bind(this, currentProject.id));
 
             let projectDelete = document.createElement("button");
             projectDelete.classList.add("todo-list-project-delete");
@@ -459,6 +501,16 @@ class UI {
         this.newProjectDescription = e.target.value;
     }
 
+    updateEditedProjectDescription(e) {
+        this.updatedProjectDescription = e.target.value;
+        console.log(this.updatedProjectDescription);
+    }
+
+    updateEditedProjectName(e) {
+        this.updatedProjectName = e.target.value;
+        console.log(this.updatedProjectName);
+    }
+
     updateEditedTodoTitle(e) {
         this.updatedTodoTitle = e.target.value;
     }
@@ -477,6 +529,35 @@ class UI {
 
     updateEditedTodoDescription(e) {
         this.updatedTodoDescription = e.target.value;
+    }
+
+    updateProject(projectId, e) {
+        e.preventDefault();
+
+        console.log("Updating project...");
+
+        // Find project and display dialog for updating it with data prefilled
+        for (let i = 0; i < this.todoList.projects.length; i++) {
+            let project = this.todoList.projects[i];
+
+            if (project.id === projectId) {
+                console.log(`Updated project name: ${this.updatedProjectName}`);
+                console.log(`Updated project description: ${this.updatedProjectDescription}`);
+
+                this.todoList.projects[i].name = this.updatedProjectName;
+                this.todoList.projects[i].description = this.updatedProjectDescription;
+
+                this.updatedProjectName = "";
+                this.updatedProjectDescription = "";
+
+                this.clearDisplay();
+                // What interface to display should depend on where the project
+                // was updated from
+                this.displayTodoList();
+
+                break;
+            }
+        }
     }
 
     updateTodo(projectId, todoId, todoArea) {
@@ -503,7 +584,7 @@ class UI {
                         this.updatedTodoDueDate = new Date();
                         this.updatedTodoPriority = "";
 
-                        this.closeTodoArea(todoArea);
+                        this.closeArea(todoArea);
                         this.displayProject(null, projectId);
 
                         break;
