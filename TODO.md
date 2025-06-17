@@ -25,9 +25,6 @@ A list of tasks for this project.
     - [x] Title
     - [x] Due date
     - [x] Priority (via colour, _on side border?_)
-        - Darkblue
-        - Purple
-        - Cyan
     - [x] Update button
     - [x] Delete button
 - [x] When updating data (e.g., todo, project), the state variables should

@@ -1,4 +1,8 @@
 import Todo from "./Todo";
+import iconBack from "./icon/back.svg";
+import iconCreate from "./icon/create.svg";
+import iconDelete from "./icon/delete.svg";
+import iconUpdate from "./icon/update.svg";
 
 class UI {
     constructor(todoList) {
@@ -488,9 +492,10 @@ class UI {
         let todoList = document.createElement("section");
         todoList.setAttribute("id", "todo-list");
 
-        let createProject = document.createElement("button");
+        let createProject = document.createElement("img");
         createProject.classList.add("todo-list-project-create");
-        createProject.textContent = "+";
+        createProject.src = iconCreate;
+        // createProject.textContent = "+";
         createProject.addEventListener("click", this.displayCreateProjectDialog.bind(this));
 
         todoList.appendChild(createProject);
@@ -515,14 +520,16 @@ class UI {
             
             projectDescription.textContent = currentProject.description;
 
-            let projectUpdate = document.createElement("button");
+            let projectUpdate = document.createElement("img");
             projectUpdate.classList.add("todo-list-project-update");
-            projectUpdate.textContent = "Update";
+            projectUpdate.src = iconUpdate;
+            // projectUpdate.textContent = "Update";
             projectUpdate.addEventListener("click", this.displayProjectUpdateDialog.bind(this, currentProject.id, false));
 
-            let projectDelete = document.createElement("button");
+            let projectDelete = document.createElement("img");
             projectDelete.classList.add("todo-list-project-delete");
-            projectDelete.textContent = "Delete";
+            projectDelete.src = iconDelete;
+            // projectDelete.textContent = "Delete";
             projectDelete.addEventListener("click", this.deleteProject.bind(this, currentProject.id));
 
             project.appendChild(projectName);

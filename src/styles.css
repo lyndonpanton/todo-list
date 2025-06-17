@@ -73,14 +73,12 @@ h1 {
     margin: 0 auto;
     width: 80px;
     height: 80px;
-    border: 2px solid black;
-    border-radius: 50%;
+    /* border: 2px solid black;
+    border-radius: 50%; */
     /* padding: 10px 40px; */
-
-    background-color: white;
     
-    font-size: 3.5rem;
-    text-align: center;
+    /* font-size: 3.5rem; */
+    /* text-align: center; */
 }
 
 #todo-list-projects {
@@ -131,16 +129,20 @@ h1 {
 
 .todo-list-project-update {
     position: absolute;
-
     bottom: 10px;
     left: 10px;
+
+    width: 30px;
+    height: 30px;
 }
 
 .todo-list-project-delete {
     position: absolute;
-    
-    bottom: 10px;
+        bottom: 10px;
     right: 10px;
+
+    width: 30px;
+    height: 30px;
 }
 
 /* Project */
@@ -237,41 +239,23 @@ h1 {
 
 .project-todo-priority-1 {
     border-left: 12px solid red;
-
-    /* color: rgb(100, 0, 0); */
 }
 
 .project-todo-priority-2 {
     border-left: 12px solid orange;
-
-    /* color: rgb(0, 100, 0); */
 }
 
 .project-todo-priority-3 {
     border-left: 12px solid purple;
-
-    /* color: rgb(0, 0, 100); */
 }
 
 .project-todo-priority-4 {
     border-left: 12px solid blue;
-
-    /* color: rgb(100, 100, 0); */
 }
 
 .project-todo-priority-5 {
     border-left: 12px solid pink;
-
-    /* color: rgb(100, 0, 100); */
 }
-
-/* 
-    - red
-    - green
-    - blue
-    - red/green
-    - red/blue
-*/
 
 .project-todo-update {
     position: absolute;
