@@ -233,32 +233,36 @@ class UI {
                 projectHeading.classList.add("project-heading");
                 projectHeading.textContent = projects[i].name;
 
-                // New Todo Button
-                let projectNewTodoButton = document.createElement("button");
-                projectNewTodoButton.classList.add("project-button-new");
-                projectNewTodoButton.textContent = "+";
-                projectNewTodoButton.type = "button";
-                projectNewTodoButton.addEventListener("click", this.displayNewTodoArea.bind(this, id));
+                // Create Todo Button
+                let createButton = document.createElement("img");
+                createButton.classList.add("project-button", "project-button-create");
+                // createButton.textContent = "+";
+                // createButton.type = "button";
+                createButton.src = iconCreate;
+                createButton.addEventListener("click", this.displayNewTodoArea.bind(this, id));
 
                 // Back Button
-                let backButton = document.createElement("button");
-                backButton.type = "button";
-                backButton.classList.add("project-button-back");
-                backButton.textContent = "<-";
+                let backButton = document.createElement("img");
+                backButton.classList.add("project-button", "project-button-back");
+                // backButton.textContent = "<-";
+                // backButton.type = "button";
+                backButton.src = iconBack;
                 backButton.addEventListener("click", this.displayTodoList.bind(this));
 
-                // Edit Button
-                let editButton = document.createElement("button");
-                editButton.type = "button";
-                editButton.classList.add("project-button-edit");
-                editButton.textContent = "Edit";
-                editButton.addEventListener("click", this.displayProjectUpdateDialog.bind(this, id, true));
+                // Update Button
+                let updateButton = document.createElement("img");
+                updateButton.classList.add("project-button", "project-button-update");
+                // updateButton.textContent = "Update";
+                // updateButton.type = "button";
+                updateButton.src = iconUpdate;
+                updateButton.addEventListener("click", this.displayProjectUpdateDialog.bind(this, id, true));
 
                 // Delete Button
-                let deleteButton = document.createElement("button");
-                deleteButton.type = "button";
-                deleteButton.classList.add("project-button-delete");
-                deleteButton.textContent = "Delete";
+                let deleteButton = document.createElement("img");
+                deleteButton.classList.add("project-button", "project-button-delete");
+                // deleteButton.textContent = "Delete";
+                // deleteButton.type = "button";
+                deleteButton.src = iconDelete;
                 deleteButton.addEventListener("click", this.deleteProject.bind(this, id));
 
                 // Todo List
@@ -334,9 +338,9 @@ class UI {
                 }
 
                 project.appendChild(projectHeading);
-                project.appendChild(projectNewTodoButton);
+                project.appendChild(createButton);
                 project.appendChild(backButton);
-                project.appendChild(editButton);
+                project.appendChild(updateButton);
                 project.appendChild(deleteButton);
                 project.appendChild(projectTodos);
 

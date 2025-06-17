@@ -155,7 +155,24 @@ h1 {
     text-align: center;
 }
 
+.project-button {
+    width: 30px;
+    height: 30px;
+}
+
 .project-button-back {
+
+}
+
+.project-button-create {
+
+}
+
+.project-button-delete {
+
+}
+
+.project-button-update {
 
 }
 
