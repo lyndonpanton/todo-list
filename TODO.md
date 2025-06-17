@@ -8,30 +8,19 @@ A list of tasks for this project.
 
 ### MVP
 
-- [x] Users should be able to go back to the todo list page from a project
-- [x] Users should be able to view individual todos
-- [x] Users should be able to update individual todos
-- [x] Users should be able to exit exiting todo dialog without updating a todo
-- [x] Users should be able to exit new todo dialog without creating a todo
-- [x] Users should be able to delete individual todos
 - [ ] Template elements should be rendered using JavaScript
-    - [ ] Header
+    - [x] Header
     - [ ] Footer
-- [x] Users should be able to update projects
-    - [x] From todo list view
-    - [x] From project view
-- [x] Users should be able to delete projects
-    - [x] From todo list view
-    - [x] From project view
-- [ ] When updating data (e.g., todo, project), the state variables should
+- [x] When updating data (e.g., todo, project), the state variables should
 initially set to the current data (otherwise immediate submission causes issues)
 - [ ] When updating data (e.g., todo, project), the user should always be sent
 back to the previous interface after submission
-- [x] Users should be able to create todos
-    - [x] Title
-    - [x] Description
-    - [x] Due date
-    - [x] Priority
+    - [x] Updating a project via the todo list view sends the user back to the
+    todo list view
+    - [ ] Updating a project via the project view sends the user back to the
+    project view
+    - [x] Updating a todo via the project view sends the user back to the
+    project view
 - [ ] Project view should display the following information for todos
     - [x] Title
     - [ ] Due date
@@ -41,13 +30,30 @@ back to the previous interface after submission
         - Cyan
     - [x] Update button
     - [x] Delete button
-- [ ] The application should have data persistence
 - [ ] Use icons for certain buttons
     - [ ] Update project in todo list view
     - [ ] Delete project in todo list view
     - [ ] Update todo in project view
     - [ ] Delete todo in project view
+- [ ] The application should have data persistence
 - [ ] Style application
+- [x] Users should be able to go back to the todo list page from a project
+- [x] Users should be able to view individual todos
+- [x] Users should be able to update individual todos
+- [x] Users should be able to exit exiting todo dialog without updating a todo
+- [x] Users should be able to exit new todo dialog without creating a todo
+- [x] Users should be able to delete individual todos
+- [x] Users should be able to update projects
+    - [x] From todo list view
+    - [x] From project view
+- [x] Users should be able to delete projects
+    - [x] From todo list view
+    - [x] From project view
+- [x] Users should be able to create todos
+    - [x] Title
+    - [x] Description
+    - [x] Due date
+    - [x] Priority
 
 ### Additional
 

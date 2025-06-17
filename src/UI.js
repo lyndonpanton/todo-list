@@ -203,8 +203,9 @@ class UI {
         this.main.appendChild(newTodoArea);
     }
 
-    displayProject(e, id) {
-        if (e !== null) {
+    displayProject(id, e) {
+        if (e !== undefined) {
+            console.log(e);
             if (
                 e.target.classList.contains("todo-list-project-update")
                 || e.target.classList.contains("todo-list-project-delete")
@@ -247,7 +248,7 @@ class UI {
                 editButton.type = "button";
                 editButton.classList.add("project-button-edit");
                 editButton.textContent = "Edit";
-                editButton.addEventListener("click", this.displayProjectUpdateDialog.bind(this, id));
+                editButton.addEventListener("click", this.displayProjectUpdateDialog.bind(this, id, true));
 
                 // Delete Button
                 let deleteButton = document.createElement("button");
@@ -310,7 +311,7 @@ class UI {
         }
     }
 
-    displayProjectUpdateDialog(id) {
+    displayProjectUpdateDialog(id, isInProjectView) {
         for (let i = 0; i < this.todoList.projects.length; i++) {
             let project = this.todoList.projects[i];
 
@@ -328,7 +329,7 @@ class UI {
 
                 let projectForm = document.createElement("form");
                 projectForm.classList.add("project-form");
-                projectForm.addEventListener("submit", this.updateProject.bind(this, id));
+                projectForm.addEventListener("submit", this.updateProject.bind(this, id, isInProjectView));
 
                 let projectFormName = document.createElement("input");
                 projectFormName.classList.add("project-form-name");
@@ -474,7 +475,7 @@ class UI {
             let project = document.createElement("article");
             project.classList.add("todo-list-project");
             project.setAttribute("data-id", currentProject.id);
-            project.addEventListener("click", (e) => this.displayProject(e, currentProject.id));
+            project.addEventListener("click", this.displayProject.bind(this, currentProject.id));
             
             let projectName = document.createElement("h2");
             projectName.classList.add("todo-list-project-name");
@@ -488,7 +489,7 @@ class UI {
             let projectUpdate = document.createElement("button");
             projectUpdate.classList.add("todo-list-project-update");
             projectUpdate.textContent = "Update";
-            projectUpdate.addEventListener("click", this.displayProjectUpdateDialog.bind(this, currentProject.id));
+            projectUpdate.addEventListener("click", this.displayProjectUpdateDialog.bind(this, currentProject.id, false));
 
             let projectDelete = document.createElement("button");
             projectDelete.classList.add("todo-list-project-delete");
@@ -558,10 +559,8 @@ class UI {
         this.updatedTodoDescription = e.target.value;
     }
 
-    updateProject(projectId, e) {
+    updateProject(projectId, isInProjectView, e) {
         e.preventDefault();
-
-        console.log("Updating project...");
 
         // Find project and display dialog for updating it with data prefilled
         for (let i = 0; i < this.todoList.projects.length; i++) {
@@ -578,9 +577,9 @@ class UI {
                 this.updatedProjectDescription = "";
 
                 this.clearDisplay();
-                // What interface to display should depend on where the project
-                // was updated from
-                this.displayTodoList();
+                
+                if (isInProjectView) this.displayProject(projectId);
+                else this.displayTodoList();
 
                 break;
             }
@@ -612,7 +611,7 @@ class UI {
                         this.updatedTodoPriority = "";
 
                         this.closeArea(todoArea);
-                        this.displayProject(null, projectId);
+                        this.displayProject(projectId);
 
                         break;
                     }
