@@ -8,19 +8,6 @@ A list of tasks for this project.
 
 ### MVP
 
-- [ ] Template elements should be rendered using JavaScript
-    - [x] Header
-    - [ ] Footer
-- [x] When updating data (e.g., todo, project), the state variables should
-initially set to the current data (otherwise immediate submission causes issues)
-- [ ] When updating data (e.g., todo, project), the user should always be sent
-back to the previous interface after submission
-    - [x] Updating a project via the todo list view sends the user back to the
-    todo list view
-    - [ ] Updating a project via the project view sends the user back to the
-    project view
-    - [x] Updating a todo via the project view sends the user back to the
-    project view
 - [ ] Project view should display the following information for todos
     - [x] Title
     - [ ] Due date
@@ -36,7 +23,20 @@ back to the previous interface after submission
     - [ ] Update todo in project view
     - [ ] Delete todo in project view
 - [ ] The application should have data persistence
+- [ ] Template elements should be rendered using JavaScript
+    - [x] Header
+    - [ ] Footer
 - [ ] Style application
+- [x] When updating data (e.g., todo, project), the state variables should
+initially set to the current data (otherwise immediate submission causes issues)
+- [x] When updating data (e.g., todo, project), the user should always be sent
+back to the previous interface after submission
+    - [x] Updating a project via the todo list view sends the user back to the
+    todo list view
+    - [x] Updating a project via the project view sends the user back to the
+    project view
+    - [x] Updating a todo via the project view sends the user back to the
+    project view
 - [x] Users should be able to go back to the todo list page from a project
 - [x] Users should be able to view individual todos
 - [x] Users should be able to update individual todos

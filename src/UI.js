@@ -272,11 +272,29 @@ class UI {
                     let todoCheckbox = document.createElement("input");
                     todoCheckbox.setAttribute("type", "checkbox");
                     todoCheckbox.classList.add("project-todo-checkbox");
+                    todoCheckbox.addEventListener("click", this.toggleTodoIsComplete.bind(this, projects[i].id, todos[j].id));
 
                     // Text
                     let todoName = document.createElement("p");
                     todoName.classList.add("project-todo-name");
                     todoName.textContent = todos[j].title;
+
+                    // Due Date
+                    let todoDueDate = document.createElement("span");
+                    todoDueDate.classList.add("project-todo-due-date");
+                    todoDueDate.textContent =
+                            todos[j].dueDate.getDate()
+                            + "/" + (todos[j].dueDate.getMonth() + 1)
+                            + "/" + todos[j].dueDate.getFullYear();
+                    
+                    console.log(todos[j].dueDate.getDate());
+                    console.log(todos[j].dueDate.getMonth());
+                    console.log(todos[j].dueDate.getFullYear());
+
+                    // Priority
+                    let todoPriority = document.createElement("span");
+                    todoPriority.classList.add("project-todo-priority");
+                    todoPriority.textContent = todos[j].priority;
 
                     // Update
                     let todoUpdate = document.createElement("span");
@@ -292,6 +310,8 @@ class UI {
 
                     todo.appendChild(todoCheckbox);
                     todo.appendChild(todoName);
+                    todo.appendChild(todoDueDate);
+                    todo.appendChild(todoPriority);
                     todo.appendChild(todoUpdate);
                     todo.appendChild(todoDelete);
 
@@ -509,6 +529,24 @@ class UI {
         this.main.appendChild(todoList);
     }
 
+    toggleTodoIsComplete(projectId, todoId) {
+        for (let i = 0; i < this.todoList.projects.length; i++) {
+            let project = this.todoList.projects[i];
+
+            if (project.id === projectId) {
+                for (let j = 0; j < project.todos.length; j++) {
+                    let todo = project.todos[j];
+
+                    if (todo.id === todoId) {
+                        this.todoList.projects[i].todos[j].setIsComplete(
+                            !this.todoList.projects[i].todos[j].getIsComplete()
+                        );
+                    }
+                }
+            }
+        }
+    }
+
     updateNewTodoDescription(e) {
         this.newTodoDescription = e.target.value;}
 
@@ -545,6 +583,7 @@ class UI {
 
     updateEditedTodoIsComplete(e) {
         this.updatedTodoIsComplete = e.target.checked;
+        console.log(this.updatedTodoIsComplete);
     }
     
     updateEditedTodoDueDate(e) {

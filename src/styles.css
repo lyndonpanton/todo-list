@@ -223,6 +223,15 @@ h1 {
     color: lightgrey;
 }
 
+
+.project-todo-due-date {
+    color: #888888;
+}
+
+.project-todo-priority {
+    text-decoration: underline;
+}
+
 .project-todo-update {
     position: absolute;
     right: 115px;
