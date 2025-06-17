@@ -228,6 +228,9 @@ class UI {
                 let project = document.createElement("section");
                 project.setAttribute("id", "project");
 
+                let projectHeader = document.createElement("section");
+                projectHeader.classList.add("project-header");
+
                 // Header
                 let projectHeading = document.createElement("h2");
                 projectHeading.classList.add("project-heading");
@@ -337,12 +340,21 @@ class UI {
                     projectTodos.appendChild(todo);
                 }
 
-                project.appendChild(projectHeading);
+                projectHeader.appendChild(backButton);
+                projectHeader.appendChild(projectHeading);
+                projectHeader.appendChild(updateButton);
+
+                project.appendChild(projectHeader);
                 project.appendChild(createButton);
-                project.appendChild(backButton);
-                project.appendChild(updateButton);
-                project.appendChild(deleteButton);
                 project.appendChild(projectTodos);
+                project.appendChild(deleteButton);
+
+                // project.appendChild(projectHeading);
+                // project.appendChild(createButton);
+                // project.appendChild(backButton);
+                // project.appendChild(updateButton);
+                // project.appendChild(deleteButton);
+                // project.appendChild(projectTodos);
 
                 this.main.appendChild(project);
                 break;
