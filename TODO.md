@@ -8,15 +8,6 @@ A list of tasks for this project.
 
 ### MVP
 
-- [ ] Project view should display the following information for todos
-    - [x] Title
-    - [ ] Due date
-    - [ ] Priority (via colour, _on side border?_)
-        - Darkblue
-        - Purple
-        - Cyan
-    - [x] Update button
-    - [x] Delete button
 - [ ] Use icons for certain buttons
     - [ ] Update project in todo list view
     - [ ] Delete project in todo list view
@@ -27,6 +18,18 @@ A list of tasks for this project.
     - [x] Header
     - [ ] Footer
 - [ ] Style application
+    - [ ] Creating todos with long names breaks the project view
+    - [ ] Creating projects with long names breaks the todo list view and
+    project view
+- [x] Project view should display the following information for todos
+    - [x] Title
+    - [x] Due date
+    - [x] Priority (via colour, _on side border?_)
+        - Darkblue
+        - Purple
+        - Cyan
+    - [x] Update button
+    - [x] Delete button
 - [x] When updating data (e.g., todo, project), the state variables should
 initially set to the current data (otherwise immediate submission causes issues)
 - [x] When updating data (e.g., todo, project), the user should always be sent

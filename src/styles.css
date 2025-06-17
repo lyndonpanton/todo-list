@@ -223,14 +223,55 @@ h1 {
     color: lightgrey;
 }
 
-
 .project-todo-due-date {
+    position: absolute;
+    right: 215px;
+    display: inline-block;
+
     color: #888888;
 }
 
 .project-todo-priority {
-    text-decoration: underline;
+    font-weight: bold;
 }
+
+.project-todo-priority-1 {
+    border-left: 12px solid red;
+
+    /* color: rgb(100, 0, 0); */
+}
+
+.project-todo-priority-2 {
+    border-left: 12px solid orange;
+
+    /* color: rgb(0, 100, 0); */
+}
+
+.project-todo-priority-3 {
+    border-left: 12px solid purple;
+
+    /* color: rgb(0, 0, 100); */
+}
+
+.project-todo-priority-4 {
+    border-left: 12px solid blue;
+
+    /* color: rgb(100, 100, 0); */
+}
+
+.project-todo-priority-5 {
+    border-left: 12px solid pink;
+
+    /* color: rgb(100, 0, 100); */
+}
+
+/* 
+    - red
+    - green
+    - blue
+    - red/green
+    - red/blue
+*/
 
 .project-todo-update {
     position: absolute;

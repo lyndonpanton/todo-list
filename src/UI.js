@@ -287,14 +287,23 @@ class UI {
                             + "/" + (todos[j].dueDate.getMonth() + 1)
                             + "/" + todos[j].dueDate.getFullYear();
                     
-                    console.log(todos[j].dueDate.getDate());
-                    console.log(todos[j].dueDate.getMonth());
-                    console.log(todos[j].dueDate.getFullYear());
+                    // console.log(todos[j].dueDate.getDate());
+                    // console.log(todos[j].dueDate.getMonth());
+                    // console.log(todos[j].dueDate.getFullYear());
 
                     // Priority
-                    let todoPriority = document.createElement("span");
-                    todoPriority.classList.add("project-todo-priority");
-                    todoPriority.textContent = todos[j].priority;
+                    // let todoPriority = document.createElement("span");
+                    // todoPriority.classList.add("project-todo-priority");
+
+                    for (let i = 0; i < 5; i++) {
+                        if (parseInt(todos[j].priority) === (i + 1)) {
+
+                            // todoPriority.classList.add("project-todo-priority-" + (i + 1));
+                            todo.classList.add("project-todo-priority-" + (i + 1));
+                        }
+                    }
+
+                    // todoPriority.textContent = `(${todos[j].priority})`;
 
                     // Update
                     let todoUpdate = document.createElement("span");
@@ -311,7 +320,7 @@ class UI {
                     todo.appendChild(todoCheckbox);
                     todo.appendChild(todoName);
                     todo.appendChild(todoDueDate);
-                    todo.appendChild(todoPriority);
+                    // todo.appendChild(todoPriority);
                     todo.appendChild(todoUpdate);
                     todo.appendChild(todoDelete);
 
