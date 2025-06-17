@@ -310,15 +310,17 @@ class UI {
                     // todoPriority.textContent = `(${todos[j].priority})`;
 
                     // Update
-                    let todoUpdate = document.createElement("span");
+                    let todoUpdate = document.createElement("img");
                     todoUpdate.classList.add("project-todo-update");
-                    todoUpdate.textContent = "Update";
+                    // todoUpdate.textContent = "Update";
+                    todoUpdate.src = iconUpdate;
                     todoUpdate.addEventListener("click", this.displayTodo.bind(this, id, todos[j].id));
 
                     // Delete
-                    let todoDelete = document.createElement("span");
+                    let todoDelete = document.createElement("img");
                     todoDelete.classList.add("project-todo-delete");
-                    todoDelete.textContent = "Delete";
+                    // todoDelete.textContent = "Delete";
+                    todoDelete.src = iconDelete;
                     todoDelete.addEventListener("click", this.deleteTodo.bind(this, id, todos[j].id));
 
                     todo.appendChild(todoCheckbox);

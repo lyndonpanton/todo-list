@@ -87,3 +87,5 @@ long
 - [ ] Methods to close a dialog should use the same function
 
 ### Bugs
+
+- [ ] Error when attempting to create a todo in project view
