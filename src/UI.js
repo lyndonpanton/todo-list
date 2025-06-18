@@ -297,6 +297,8 @@ class UI {
                     let todoDueDate = document.createElement("span");
                     todoDueDate.classList.add("project-todo-due-date");
 
+                    todoDueDate.textContent = format(todos[j].dueDate, "dd/MM/yyyy");
+
                     // Priority
                     // let todoPriority = document.createElement("span");
                     // todoPriority.classList.add("project-todo-priority");
