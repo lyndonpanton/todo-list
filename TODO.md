@@ -8,11 +8,9 @@ A list of tasks for this project.
 
 ### MVP
 
-- [ ] Use icons for certain buttons
-    - [ ] Update project in todo list view
-    - [ ] Delete project in todo list view
-    - [ ] Update todo in project view
-    - [ ] Delete todo in project view
+- **[ ] Error when attempting to create a todo in project view**
+
+- [ ] Format dates in the UI: `DD/MM/YYYY`
 - [ ] The application should have data persistence
 - [ ] Template elements should be rendered using JavaScript
     - [x] Header
@@ -21,6 +19,15 @@ A list of tasks for this project.
     - [ ] Creating todos with long names breaks the project view
     - [ ] Creating projects with long names breaks the todo list view and
     project view
+    - [ ] Create project dialog should display on top of previous interface
+    - [ ] Update project dialog should display on top of previous interface
+    - [ ] Create todo dialog should dispay on top of previous interface
+    - [ ] Update todo dialog should dispay on top of previous interface
+- [x] Use icons for certain buttons
+    - [x] Update project in todo list view
+    - [x] Delete project in todo list view
+    - [x] Update todo in project view
+    - [x] Delete todo in project view
 - [x] Project view should display the following information for todos
     - [x] Title
     - [x] Due date
@@ -87,5 +94,3 @@ long
 - [ ] Methods to close a dialog should use the same function
 
 ### Bugs
-
-- [ ] Error when attempting to create a todo in project view

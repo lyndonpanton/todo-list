@@ -19,6 +19,7 @@ An application which allows users to create projects with todos.
 ### Managers, Packages, and Libraries
 
 - npm
+    - [date-fns](https://www.npmjs.com/package/date-fns)
 
 ### Development Tools
 

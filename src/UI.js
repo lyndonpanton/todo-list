@@ -1,8 +1,11 @@
-import Todo from "./Todo";
 import iconBack from "./icon/back.svg";
 import iconCreate from "./icon/create.svg";
 import iconDelete from "./icon/delete.svg";
 import iconUpdate from "./icon/update.svg";
+
+import Todo from "./Todo";
+
+import { format } from "date-fns";
 
 class UI {
     constructor(todoList) {
@@ -293,14 +296,6 @@ class UI {
                     // Due Date
                     let todoDueDate = document.createElement("span");
                     todoDueDate.classList.add("project-todo-due-date");
-                    todoDueDate.textContent =
-                            todos[j].dueDate.getDate()
-                            + "/" + (todos[j].dueDate.getMonth() + 1)
-                            + "/" + todos[j].dueDate.getFullYear();
-                    
-                    // console.log(todos[j].dueDate.getDate());
-                    // console.log(todos[j].dueDate.getMonth());
-                    // console.log(todos[j].dueDate.getFullYear());
 
                     // Priority
                     // let todoPriority = document.createElement("span");
@@ -308,7 +303,6 @@ class UI {
 
                     for (let i = 0; i < 5; i++) {
                         if (parseInt(todos[j].priority) === (i + 1)) {
-
                             // todoPriority.classList.add("project-todo-priority-" + (i + 1));
                             todo.classList.add("project-todo-priority-" + (i + 1));
                         }
