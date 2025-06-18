@@ -4,12 +4,14 @@ import iconDelete from "./icon/delete.svg";
 import iconUpdate from "./icon/update.svg";
 
 import Todo from "./Todo";
+import TodoList from "./TodoList";
 
 import { format } from "date-fns";
 
 class UI {
     constructor(todoList) {
         this.todoList = todoList;
+
         this.main = document.getElementsByTagName("main")[0];
 
         this.newProjectName = "";
@@ -19,9 +21,9 @@ class UI {
         this.updatedProjectDescription = "";
 
         this.newTodoTitle = "";
-        this.newTodoPriority = 5;
-        this.newTodoDueDate = new Date();
         this.newTodoDescription = "";
+        this.newTodoDueDate = new Date();
+        this.newTodoPriority = 5;
 
         this.updatedTodoTitle = "";
         this.updatedTodoIsComplete = "";
@@ -56,6 +58,10 @@ class UI {
         e.preventDefault();
 
         this.todoList.addProjectByData(this.newProjectName, this.newProjectDescription);
+        
+        if (localStorage) {
+            localStorage.setItem("todo-list", JSON.stringify(this.todoList));
+        }
 
         this.newProjectName = "";
         this.newProjectDescription = "";
@@ -70,6 +76,7 @@ class UI {
             let project = this.todoList.projects[i];
 
             if (project.id === projectId) {
+                console.log(this.todoList.projects[i]);
                 this.todoList.projects[i].addTodo(new Todo(
                     this.newTodoTitle,
                     this.newTodoDescription,
@@ -77,6 +84,10 @@ class UI {
                     this.newTodoDueDate,
                     this.newTodoPriority
                 ));
+
+                if (localStorage) {
+                    localStorage.setItem("todo-list", JSON.stringify(this.todoList));
+                }
             }
         }
 
@@ -95,6 +106,11 @@ class UI {
 
             if (project.id === projectId) {
                 this.todoList.projects.splice(i, 1);
+
+                if (localStorage) {
+                    localStorage.setItem("todo-list", JSON.stringify(this.todoList));
+                }
+
                 this.displayTodoList();
                 
                 return;
@@ -114,6 +130,10 @@ class UI {
 
                     if (todo.id === todoId) {
                         this.todoList.projects[i].deleteTodo(todo.id);
+                        
+                        if (localStorage) {
+                            localStorage.setItem("todo-list", JSON.stringify(this.todoList));
+                        }
                     }
                 }
             }
@@ -283,8 +303,9 @@ class UI {
 
                     // Checkbox
                     let todoCheckbox = document.createElement("input");
-                    todoCheckbox.setAttribute("type", "checkbox");
                     todoCheckbox.classList.add("project-todo-checkbox");
+                    todoCheckbox.setAttribute("type", "checkbox");
+                    todoCheckbox.checked = todos[j].isComplete;
                     todoCheckbox.addEventListener("click", this.toggleTodoIsComplete.bind(this, projects[i].id, todos[j].id));
 
                     // Text
@@ -436,13 +457,14 @@ class UI {
 
                         let todoIsComplete = document.createElement("input");
                         todoIsComplete.type = "checkbox";
-                        todoIsComplete.checked = todo.isComplete;
+                        todoIsComplete.checked = todo.getIsComplete;
                         todoIsComplete.classList.add("todo-is-complete");
                         todoIsComplete.addEventListener("click", this.updateEditedTodoIsComplete.bind(this));
 
                         let todoDueDate = document.createElement("input");
                         todoDueDate.type = "date";
                         todoDueDate.classList.add("todo-due-date");
+                        console.log(todo.dueDate);
                         todoDueDate.valueAsDate = todo.dueDate;
                         todoDueDate.addEventListener("change", this.updateEditedTodoDueDate.bind(this));
 
@@ -567,26 +589,31 @@ class UI {
                     let todo = project.todos[j];
 
                     if (todo.id === todoId) {
-                        this.todoList.projects[i].todos[j].setIsComplete(
-                            !this.todoList.projects[i].todos[j].getIsComplete()
-                        );
+                        this.todoList.projects[i].todos[j].isComplete = !this.todoList.projects[i].todos[j].isComplete;
+
+                        localStorage.setItem("todo-list", JSON.stringify(this.todoList));
                     }
+
                 }
             }
         }
     }
 
     updateNewTodoDescription(e) {
-        this.newTodoDescription = e.target.value;}
+        this.newTodoDescription = e.target.value;
+    }
 
     updateNewTodoDueDate(e) {
-        this.newTodoDueDate = e.target.valueAsDate;}
+        this.newTodoDueDate = e.target.valueAsDate;
+    }
 
     updateNewTodoPriority(e) {
-        this.newTodoPriority = e.target.value;}
+        this.newTodoPriority = e.target.value;
+    }
     
     updateNewTodoTitle(e) {
-        this.newTodoTitle = e.target.value;}
+        this.newTodoTitle = e.target.value;
+    }
 
     updateNewProjectName(e) {
         this.newProjectName = e.target.value;
@@ -598,12 +625,10 @@ class UI {
 
     updateEditedProjectDescription(e) {
         this.updatedProjectDescription = e.target.value;
-        console.log(this.updatedProjectDescription);
     }
 
     updateEditedProjectName(e) {
         this.updatedProjectName = e.target.value;
-        console.log(this.updatedProjectName);
     }
 
     updateEditedTodoTitle(e) {
@@ -612,7 +637,6 @@ class UI {
 
     updateEditedTodoIsComplete(e) {
         this.updatedTodoIsComplete = e.target.checked;
-        console.log(this.updatedTodoIsComplete);
     }
     
     updateEditedTodoDueDate(e) {
@@ -635,11 +659,12 @@ class UI {
             let project = this.todoList.projects[i];
 
             if (project.id === projectId) {
-                console.log(`Updated project name: ${this.updatedProjectName}`);
-                console.log(`Updated project description: ${this.updatedProjectDescription}`);
-
                 this.todoList.projects[i].name = this.updatedProjectName;
                 this.todoList.projects[i].description = this.updatedProjectDescription;
+
+                if (localStorage) {
+                    localStorage.setItem("todo-list", JSON.stringify(this.todoList));
+                }
 
                 this.updatedProjectName = "";
                 this.updatedProjectDescription = "";
@@ -671,6 +696,10 @@ class UI {
                         this.todoList.projects[i].todos[j].setIsComplete(this.updatedTodoIsComplete);
                         this.todoList.projects[i].todos[j].setDueDate(this.updatedTodoDueDate);
                         this.todoList.projects[i].todos[j].setPriority(this.updatedTodoPriority);
+
+                        if (localStorage) {
+                            localStorage.setItem("todo-list", JSON.stringify(this.todoList));
+                        }
 
                         this.updatedTodoTitle = "";
                         this.updatedTodoDescription = "";

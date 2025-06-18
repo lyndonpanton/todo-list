@@ -8,8 +8,14 @@ A list of tasks for this project.
 
 ### MVP
 
-- **[ ] Error when attempting to create a todo in project view**
 - [ ] The application should have data persistence
+    - [x] Application start: Load local storage
+    - [x] Create project: Save local storage
+    - [x] Update project: Save local storage
+    - [x] Delete project: Save local storage
+    - [x] Create todo: Save local storage
+    - [ ] Update todo: Save local storage
+    - [x] Delete todo: Save local storage
 - [ ] Template elements should be rendered using JavaScript
     - [x] Header
     - [ ] Footer
@@ -93,3 +99,7 @@ long
 - [ ] Methods to close a dialog should use the same function
 
 ### Bugs
+
+- [ ] New keys are generated when projects are loaded from local storage
+- [ ] New keys are generated when todos are loaded from local storage
+- [x] Error when attempting to create a todo in project view

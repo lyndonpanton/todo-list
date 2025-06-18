@@ -1,3 +1,5 @@
+import Todo from "./Todo";
+
 class Project {
     constructor(name, description) {
         this.id = self.crypto.randomUUID();
@@ -8,13 +10,23 @@ class Project {
 
     addTodo(todo) {
         // this.todos = [...this.todos, todo];
-        this.todos.push(todo);
+        this.todos.push(todo);  
     }
 
     // addTodo(title, description, dueDate, priority) {
     //     let todo = new Todo(title, description, false, dueDate, priority);
     //     this.addTodo(todo);
     // }
+
+    deleteTodo(id) {
+        for (let i = 0; i < this.todos.length; i++) {
+            console.log(`${this.todos[i].title}`);
+            if (this.todos[i].id === id) {
+                this.todos.splice(i, 1);
+                return;
+            }
+        }
+    }
     
     getTodo(id) {
         for (let i = 0; i < this.todos.length; i++) {
@@ -46,16 +58,6 @@ class Project {
                         break;
                 }
 
-                return;
-            }
-        }
-    }
-
-    deleteTodo(id) {
-        for (let i = 0; i < this.todos.length; i++) {
-            console.log(`${this.todos[i].title}`);
-            if (this.todos[i].id === id) {
-                this.todos.splice(i, 1);
                 return;
             }
         }
