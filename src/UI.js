@@ -457,14 +457,13 @@ class UI {
 
                         let todoIsComplete = document.createElement("input");
                         todoIsComplete.type = "checkbox";
-                        todoIsComplete.checked = todo.getIsComplete;
+                        todoIsComplete.checked = todo.getIsComplete();
                         todoIsComplete.classList.add("todo-is-complete");
                         todoIsComplete.addEventListener("click", this.updateEditedTodoIsComplete.bind(this));
 
                         let todoDueDate = document.createElement("input");
                         todoDueDate.type = "date";
                         todoDueDate.classList.add("todo-due-date");
-                        console.log(todo.dueDate);
                         todoDueDate.valueAsDate = todo.dueDate;
                         todoDueDate.addEventListener("change", this.updateEditedTodoDueDate.bind(this));
 
