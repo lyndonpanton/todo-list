@@ -9,8 +9,6 @@ A list of tasks for this project.
 ### MVP
 
 - **[ ] Error when attempting to create a todo in project view**
-
-- [ ] Format dates in the UI: `DD/MM/YYYY`
 - [ ] The application should have data persistence
 - [ ] Template elements should be rendered using JavaScript
     - [x] Header
@@ -23,6 +21,7 @@ A list of tasks for this project.
     - [ ] Update project dialog should display on top of previous interface
     - [ ] Create todo dialog should dispay on top of previous interface
     - [ ] Update todo dialog should dispay on top of previous interface
+- [x] Format dates in the UI: `DD/MM/YYYY`
 - [x] Use icons for certain buttons
     - [x] Update project in todo list view
     - [x] Delete project in todo list view

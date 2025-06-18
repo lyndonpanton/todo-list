@@ -86,7 +86,7 @@ class UI {
         this.newTodoDescription = "";
 
         this.closeTodoArea();
-        this.displayProject(null, projectId);
+        this.displayProject(projectId, null);
     }
 
     deleteProject(projectId) {
@@ -211,8 +211,7 @@ class UI {
     }
 
     displayProject(id, e) {
-        if (e !== undefined) {
-            console.log(e);
+        if (e !== undefined && e !== null) {
             if (
                 e.target.classList.contains("todo-list-project-update")
                 || e.target.classList.contains("todo-list-project-delete")
