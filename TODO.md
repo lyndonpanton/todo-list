@@ -8,25 +8,51 @@ A list of tasks for this project.
 
 ### MVP
 
-- [ ] The application should have data persistence
+- [ ] Style application
+    - [ ] Creating todos titles with a lot of text breaks in
+        - [ ] Project view
+    - [ ] Creating projects titles with a lot of text breaks in
+        - [ ] Todo list view
+        - [ ] project view
+    - [ ] Creating projects descriptions with a lot of text breaks in project
+    view
+    - [ ] Create project dialog should display on top of previous interface
+    - [ ] Update project dialog should display on top of previous interface
+    - [ ] Create todo dialog should display on top of previous interface
+    - [ ] Update todo dialog should display on top of previous interface
+- Validate application
+    - [ ] Project
+        - [ ] Title
+            - [ ] String
+            - [ ] 40 characters
+        - [ ] Description
+            - [ ] String
+            - [ ] 400 characters
+    - [ ] Todo
+        - [ ] Title
+            - [ ] String
+            - [ ] 40 characters
+        - [ ] Description
+            - [ ] String
+            - [ ] 400 characters
+        - [ ] Is Complete
+            - [ ] Boolean
+        - [ ] Due Date
+            - [ ] Date
+        - [ ] Priority
+            - [ ] Integer: 1 - 5
+- [ ] Template elements should be rendered using JavaScript
+    - [x] Header
+    - [ ] Footer
+- [ ] Cut off overflowing content with an ellipsis
+- [x] The application should have data persistence
     - [x] Application start: Load local storage
     - [x] Create project: Save local storage
     - [x] Update project: Save local storage
     - [x] Delete project: Save local storage
     - [x] Create todo: Save local storage
-    - [ ] Update todo: Save local storage
+    - [x] Update todo: Save local storage
     - [x] Delete todo: Save local storage
-- [ ] Template elements should be rendered using JavaScript
-    - [x] Header
-    - [ ] Footer
-- [ ] Style application
-    - [ ] Creating todos with long names breaks the project view
-    - [ ] Creating projects with long names breaks the todo list view and
-    project view
-    - [ ] Create project dialog should display on top of previous interface
-    - [ ] Update project dialog should display on top of previous interface
-    - [ ] Create todo dialog should dispay on top of previous interface
-    - [ ] Update todo dialog should dispay on top of previous interface
 - [x] Format dates in the UI: `DD/MM/YYYY`
 - [x] Use icons for certain buttons
     - [x] Update project in todo list view

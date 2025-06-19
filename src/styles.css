@@ -119,11 +119,21 @@ h1 {
 
 .todo-list-project-name {
     margin: 0;
+    padding: 0;
+    height: 1lh;
+
+    overflow-x: hidden;
+    overflow-y: hidden;
 
     text-align: center;
 }
 
 .todo-list-project-description {
+    height: 55%;
+    
+    overflow-x: hidden;
+    overflow-y: hidden;
+
     color: #888888;
 }
 
