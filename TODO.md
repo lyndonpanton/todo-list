@@ -9,8 +9,8 @@ A list of tasks for this project.
 ### MVP
 
 - [ ] Style application
-    - [ ] Creating todos titles with a lot of text breaks in
-        - [ ] Project view
+    - [x] Creating todos titles with a lot of text breaks in
+        - [x] Project view
     - [x] Creating projects titles with a lot of text breaks in
         - [x] Todo list view
         - [x] Project view
@@ -18,7 +18,7 @@ A list of tasks for this project.
     view
     - [ ] Create project dialog should display on top of current interface
     - [ ] Update project dialog should display on top of current interface
-    - [ ] Create todo dialog should display on top of current interface
+    - [x] Create todo dialog should display on top of current interface
     - [ ] Update todo dialog should display on top of current interface
 - Validate application
     - [ ] Project

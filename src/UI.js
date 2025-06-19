@@ -39,8 +39,6 @@ class UI {
     }
 
     closeArea(area) {
-        // let newTodoArea = document.getElementById("new-todo-area");
-
         if (area) {
             area.parentElement.removeChild(area);
         }
@@ -178,31 +176,34 @@ class UI {
         newTodoAreaClose.classList.add("new-todo-area-close");
         newTodoAreaClose.textContent = "x";
         newTodoAreaClose.type = "button";
-        newTodoAreaClose.addEventListener("click", () => this.closeArea(newTodoArea));
+        newTodoAreaClose.addEventListener("click", this.closeArea.bind(this, newTodoArea));
 
         let newTodoForm = document.createElement("form");
+        newTodoForm.classList.add("new-todo-form")
         newTodoForm.addEventListener("submit", this.createTodo.bind(this, projectId));
 
         let newTodoTitle = document.createElement("input");
-        newTodoTitle.classList.add("new-todo-title");
+        newTodoTitle.classList.add("new-todo-form-title");
+        newTodoTitle.setAttribute("placeholder", "Todo title");
         newTodoTitle.type = "text";
         newTodoTitle.addEventListener("keyup", this.updateNewTodoTitle.bind(this));
 
-        let newTodoIsComplete = document.createElement("input");
-        newTodoIsComplete.classList.add("new-todo-is-complete");
-        newTodoIsComplete.type = "checkbox";
+        // let newTodoIsComplete = document.createElement("input");
+        // newTodoIsComplete.classList.add("new-todo-form-is-complete");
+        // newTodoIsComplete.type = "checkbox";
 
         let newTodoDueDate = document.createElement("input");
-        newTodoDueDate.classList.add("new-todo-due-date");
+        newTodoDueDate.classList.add("new-todo-form-due-date");
         newTodoDueDate.type = "date";
         newTodoDueDate.addEventListener("change", this.updateNewTodoDueDate.bind(this));
 
         let newTodoPriority = document.createElement("select");
-        newTodoPriority.classList.add("new-todo-priority");
+        newTodoPriority.classList.add("new-todo-form-priority");
         newTodoPriority.addEventListener("click", this.updateNewTodoPriority.bind(this));
 
         for (let i = 0; i < 5; i++) {
             let newTodoPriorityOption = document.createElement("option");
+            newTodoPriorityOption.classList.add("new-todo-form-priority-option");
             newTodoPriorityOption.textContent = (i + 1);
             newTodoPriorityOption.value = (i + 1);
 
@@ -210,15 +211,16 @@ class UI {
         }
 
         let newTodoDescription = document.createElement("textarea");
-        newTodoDescription.classList.add("new-todo-description");
+        newTodoDescription.classList.add("new-todo-form-description");
+        newTodoDescription.setAttribute("placeholder", "Todo description");
         newTodoDescription.addEventListener("keyup", this.updateNewTodoDescription.bind(this));
 
         let newTodoSubmit = document.createElement("input");
-        newTodoSubmit.classList.add("new-todo-submit");
+        newTodoSubmit.classList.add("new-todo-form-submit");
         newTodoSubmit.type = "submit";
 
         newTodoForm.appendChild(newTodoTitle);
-        newTodoForm.appendChild(newTodoIsComplete);
+        // newTodoForm.appendChild(newTodoIsComplete);
         newTodoForm.appendChild(newTodoDueDate);
         newTodoForm.appendChild(newTodoPriority);
         newTodoForm.appendChild(newTodoDescription);
