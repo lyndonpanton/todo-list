@@ -256,6 +256,12 @@ h1 {
 
 .project-todo-name {
     display: inline-block;
+
+    height: 1lh;
+    width: 60%;
+
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 .project-todo-checkbox:checked + .project-todo-name {
