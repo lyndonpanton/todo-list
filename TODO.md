@@ -13,6 +13,7 @@ A list of tasks for this project.
     - [ ] Footer
 - [ ] Style footer
 - [ ] Change font
+    - [ ] Add font to footer list
 - [ ] Validate application
     - [ ] Project
         - [ ] Title
