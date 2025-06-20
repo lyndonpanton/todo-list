@@ -13,20 +13,23 @@ An application which allows users to create projects with todos.
 ### Languages and Frameworks
 
 - Frontend: HTML, CSS, JavaScript
-- Server: NodeJS
-- Bundler: Webpack
 
 ### Managers, Packages, and Libraries
 
-- npm
+- [npm](https://www.npmjs.com/)
     - [date-fns](https://www.npmjs.com/package/date-fns)
+- [Google Fonts](https://fonts.google.com)
+- [Simple Icons](https://simpleicons.org/)
 
 ### Development Tools
 
-- Git
-- Git Bash
-- Visual Studio Code
+- [Git](https://git-scm.com/doc)
+- [Git Bash](https://git-scm.com/downloads)
+- [Visual Studio Code](https://code.visualstudio.com/)
+- [Webpack](https://webpack.js.org/)
 
 ## Credits
+
+- [Lyndon Mykal Panton (developer)](https://github.com/lyndonpanton)
 
 ## References

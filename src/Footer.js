@@ -134,19 +134,19 @@ class Footer {
         simpleIconsLink.textContent = "Simple Icons";
         simpleIcons.appendChild(simpleIconsLink);
 
-        let fontSource = document.createElement("li");
-        let fontSourceLink = document.createElement("a");
-        fontSourceLink.setAttribute("href", "https://fontsource.org/");
-        fontSourceLink.setAttribute("target", "_blank");
-        fontSourceLink.text = "Font Source";
-        fontSource.appendChild(fontSourceLink);
+        let googleFonts = document.createElement("li");
+        let googleFontsLink = document.createElement("a");
+        googleFontsLink.setAttribute("href", "https://fonts.google.com");
+        googleFontsLink.setAttribute("target", "_blank");
+        googleFontsLink.text = "Google Fonts";
+        googleFonts.appendChild(googleFontsLink);
 
         list.appendChild(heading);
         list.appendChild(npm);
         list.appendChild(webpack);
         list.appendChild(dateFNS);
         list.appendChild(simpleIcons);
-        list.appendChild(fontSource);
+        list.appendChild(googleFonts);
 
         return list;
     }

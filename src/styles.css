@@ -628,26 +628,6 @@ main {
     background-color: #AACCFF;
 }
 
-/* Update Todo */
-/* #todo-area {
-    position: absolute;
-    top: 20vh;
-    left: 20vw;
-
-    width: 60vw;
-    height: 600px;
-
-    opacity: 0.8;
-}
-
-.todo-area-close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-
-    font-size: 3rem;
-} */
-
 /* Footer */
 footer {
     border-top: 1px solid #DDDDDD;
