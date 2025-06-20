@@ -18,8 +18,10 @@ A list of tasks for this project.
     view
     - [ ] Create project dialog should display on top of current interface
     - [ ] Update project dialog should display on top of current interface
+        - [ ] From todo list view
+        - [ ] From project view
     - [x] Create todo dialog should display on top of current interface
-    - [ ] Update todo dialog should display on top of current interface
+    - [x] Update todo dialog should display on top of current interface
 - Validate application
     - [ ] Project
         - [ ] Title
@@ -44,7 +46,6 @@ A list of tasks for this project.
 - [ ] Template elements should be rendered using JavaScript
     - [x] Header
     - [ ] Footer
-- [ ] Cut off overflowing content with an ellipsis
 - [x] The application should have data persistence
     - [x] Application start: Load local storage
     - [x] Create project: Save local storage
@@ -119,6 +120,7 @@ application
     - [ ] By priority
 - [ ] Project descriptions should be cut off with an ellipsis if they are too
 long
+- [ ] Cut off overflowing content with an ellipsis
 
 #### Maintenance
 

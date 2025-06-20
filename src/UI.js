@@ -448,29 +448,24 @@ class UI {
                         todoAreaClose.classList.add("todo-area-close");
                         todoAreaClose.addEventListener("click", () => this.closeArea(todoArea));
 
-                        let todoElement = document.createElement("article");
-                        todoElement.classList.add("todo");
+                        let todoForm = document.createElement("form");
+                        todoForm.classList.add("todo-form");
+                        todoForm.addEventListener("submit", this.updateTodo.bind(this, projectId, todoId, todoArea));
 
                         let todoTitle = document.createElement("input");
                         todoTitle.type = "text";
                         todoTitle.value = todo.getTitle();
-                        todoTitle.classList.add("todo-title");
+                        todoTitle.classList.add("todo-form-title");
                         todoTitle.addEventListener("keyup", this.updateEditedTodoTitle.bind(this));
-
-                        let todoIsComplete = document.createElement("input");
-                        todoIsComplete.type = "checkbox";
-                        todoIsComplete.checked = todo.getIsComplete();
-                        todoIsComplete.classList.add("todo-is-complete");
-                        todoIsComplete.addEventListener("click", this.updateEditedTodoIsComplete.bind(this));
 
                         let todoDueDate = document.createElement("input");
                         todoDueDate.type = "date";
-                        todoDueDate.classList.add("todo-due-date");
+                        todoDueDate.classList.add("todo-form-due-date");
                         todoDueDate.valueAsDate = todo.dueDate;
                         todoDueDate.addEventListener("change", this.updateEditedTodoDueDate.bind(this));
 
                         let todoPriority = document.createElement("select");
-                        todoPriority.classList.add("todo-priority");
+                        todoPriority.classList.add("todo-form-priority");
                         
                         for (let i = 0; i < 5; i++) {
                             let todoPriorityOption = document.createElement("option");
@@ -479,7 +474,7 @@ class UI {
 
                             if ((i + 1) == todo.getPriority()) todoPriorityOption.selected = true;
 
-                            todoPriorityOption.classList.add("todo-priority-option");
+                            todoPriorityOption.classList.add("todo-form-priority-option");
                             
                             todoPriority.appendChild(todoPriorityOption);
                         }
@@ -487,25 +482,43 @@ class UI {
                         todoPriority.addEventListener("click", this.updateEditedTodoPriority.bind(this));
 
                         let todoDescription = document.createElement("textarea");
-                        todoDescription.classList.add("todo-description");
+                        todoDescription.classList.add("todo-form-description");
                         todoDescription.textContent = todo.description;
                         todoDescription.addEventListener("keyup", this.updateEditedTodoDescription.bind(this));
+                        
+                        let todoIsCompleteLabel = document.createElement("label");
+                        todoIsCompleteLabel.classList.add("todo-form-is-complete-label");
+                        todoIsCompleteLabel.setAttribute("for", "todo-form-is-complete");
+
+                        let todoIsComplete = document.createElement("input");
+                        todoIsComplete.classList.add("todo-form-is-complete");
+                        todoIsComplete.setAttribute("id", "todo-form-is-complete");
+                        todoIsComplete.type = "checkbox";
+                        todoIsComplete.checked = todo.getIsComplete();
+                        todoIsComplete.addEventListener("click", this.updateEditedTodoIsComplete.bind(this));
+
+                        let todoIsCompleteText = document.createElement("span");
+                        todoIsCompleteText.classList.add("todo-form-is-complete-text");
+                        todoIsCompleteText.setAttribute("id", "todo-form-is-complete-text");
+                        todoIsCompleteText.textContent = "Is Complete?";
 
                         let todoModify = document.createElement("button");
-                        todoModify.type = "button";
-                        todoModify.classList.add("todo-modify");
-                        todoModify.addEventListener("click", this.updateTodo.bind(this, projectId, todoId, todoArea));
+                        todoModify.type = "submit";
+                        todoModify.classList.add("todo-form-submit");
                         todoModify.textContent = "Update";
 
-                        todoElement.appendChild(todoTitle);
-                        todoElement.appendChild(todoIsComplete);
-                        todoElement.appendChild(todoDueDate);
-                        todoElement.appendChild(todoPriority);
-                        todoElement.appendChild(todoDescription);
-                        todoElement.appendChild(todoModify);
+                        todoIsCompleteLabel.appendChild(todoIsCompleteText);
+                        todoIsCompleteLabel.appendChild(todoIsComplete);
+
+                        todoForm.appendChild(todoTitle);
+                        todoForm.appendChild(todoDueDate);
+                        todoForm.appendChild(todoPriority);
+                        todoForm.appendChild(todoDescription);
+                        todoForm.appendChild(todoIsCompleteLabel);
+                        todoForm.appendChild(todoModify);
 
                         todoArea.appendChild(todoAreaClose);
-                        todoArea.appendChild(todoElement);
+                        todoArea.appendChild(todoForm);
 
                         this.updatedTodoTitle = todo.getTitle();
                         this.updatedTodoIsComplete = todo.getIsComplete();
@@ -680,7 +693,8 @@ class UI {
         }
     }
 
-    updateTodo(projectId, todoId, todoArea) {
+    updateTodo(projectId, todoId, todoArea, e) {
+        e.preventDefault();
         let todoFound = false;
 
         for (let i = 0; i < this.todoList.projects.length; i++) {

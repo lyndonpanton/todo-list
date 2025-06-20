@@ -413,8 +413,8 @@ h1 {
 
 /* New Project */
 
-/* New Todo */
-#new-todo-area {
+/* Edit Todo */
+#todo-area, #new-todo-area {
     position: absolute;
     top: 0;
     left: 0;
@@ -425,7 +425,7 @@ h1 {
     background-color: rgba(240, 240, 240, 0.5);
 }
 
-.new-todo-area-close {
+.todo-area-close, .new-todo-area-close {
     position: absolute;
     top: 0px;
     right: 60px;
@@ -439,7 +439,7 @@ h1 {
     font-size: 8rem;
 }
 
-.new-todo-form {
+.todo-form, .new-todo-form {
     position: absolute;
     top: 35vh;
     left: 27.5vw;
@@ -453,19 +453,24 @@ h1 {
     background-color: white;
 }
 
-.new-todo-form > * {
+.todo-form {
+    top: 30vh;
+    height: 450px;
+}
+
+.todo-form > *, .new-todo-form > * {
     font-family: inherit;
     font-size: 1.4rem;
 }
 
-.new-todo-form-title {
+.todo-form-title, .new-todo-form-title {
     margin-right: 10px;
     width: 60%;
     height: 40px;
     padding: 0 10px;
 }
 
-.new-todo-form-description {
+.todo-form-description, .new-todo-form-description {
     display: block;
 
     margin: 20px auto;
@@ -478,15 +483,14 @@ h1 {
     font-size: 1.2rem;
 }
 
-.new-todo-form-due-date {
+.todo-form-due-date, .new-todo-form-due-date {
     margin-right: 10px;
     width: 25%;
     height: 40px;
     padding: 0 5px;
 }
 
-.new-todo-form-priority {
-    /* margin-right: 10px; */
+.todo-form-priority, .new-todo-form-priority {
     width: 11%;
     height: 40px;
     padding-right: 10px;
@@ -494,13 +498,50 @@ h1 {
     text-align: right;
 }
 
-.new-todo-form-priority-option {
+.todo-form-priority-option, .new-todo-form-priority-option {
     margin-right: 10px;
     width: 8%;
     padding-right: 10px;
 }
 
-.new-todo-form-submit {
+.todo-form-is-complete {
+    position: relative;
+
+    width: 30px;
+    height: 30px;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+
+.todo-form-is-complete:checked::after {
+    content: "";
+
+    position: absolute;
+    top: 3.5px;
+    left: 3.5px;
+
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+
+    background-color: lightblue;
+}
+
+.todo-form-is-complete-label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    margin: 20px 0;
+    padding: 0;
+}
+
+.todo-form-is-complete-text {
+
+}
+
+.todo-form-submit, .new-todo-form-submit {
     display: block;
 
     margin: 0 auto;
@@ -512,7 +553,7 @@ h1 {
 }
 
 /* Update Todo */
-#todo-area {
+/* #todo-area {
     position: absolute;
     top: 20vh;
     left: 20vw;
@@ -529,6 +570,6 @@ h1 {
     right: 10px;
 
     font-size: 3rem;
-}
+} */
 
 /* Footer */
