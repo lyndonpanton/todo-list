@@ -143,29 +143,45 @@ class UI {
     }
 
     displayCreateProjectDialog() {
-        // Project: name, description
-        let form = document.createElement("form");
-        form.setAttribute("id", "dialog-area");
-        form.addEventListener("submit", this.createProject.bind(this));
+        let projectArea = document.createElement("section");
+        projectArea.setAttribute("id", "project-area");
 
-        let projectName = document.createElement("input");
-        projectName.type = "text";
-        projectName.classList.add("dialog-project-name");
-        projectName.addEventListener("keyup", this.updateNewProjectName.bind(this));
+        let projectAreaClose = document.createElement("button");
+        projectAreaClose.classList.add("project-area-close");
+        projectAreaClose.setAttribute("type", "button");
+        projectAreaClose.textContent = "x";
+        projectAreaClose.addEventListener("click", () => this.closeArea(projectArea));
 
-        let projectDescription = document.createElement("textarea");
-        projectDescription.classList.add("dialog-project-description");
-        projectDescription.addEventListener("keyup", this.updateNewProjectDescription.bind(this));
+        let projectForm = document.createElement("form");
+        projectForm.classList.add("project-form");
+        projectForm.addEventListener("submit", this.createProject.bind(this));
 
-        let submitButton = document.createElement("button");
-        submitButton.type = "submit";
-        submitButton.textContent = "Create";
+        let projectFormName = document.createElement("input");
+        projectFormName.classList.add("project-form-name");
+        projectFormName.setAttribute("placeholder", "Project Name");
+        projectFormName.setAttribute("type", "text");
+        projectFormName.addEventListener("keydown", this.updateNewProjectName.bind(this));
+        projectFormName.addEventListener("keyup", this.updateNewProjectName.bind(this));
 
-        form.appendChild(projectName);
-        form.appendChild(projectDescription);
-        form.appendChild(submitButton);
+        let projectFormDescription = document.createElement("textarea");
+        projectFormDescription.classList.add("project-form-description");
+        projectFormDescription.setAttribute("placeholder", "Project Description");
+        projectFormDescription.addEventListener("keydown", this.updateNewProjectDescription.bind(this));
+        projectFormDescription.addEventListener("keyup", this.updateNewProjectDescription.bind(this));
+
+        let projectFormSubmit = document.createElement("input");
+        projectFormSubmit.classList.add("project-form-submit");
+        projectFormSubmit.setAttribute("type", "submit");
+        projectFormSubmit.value = "Create";
+
+        projectForm.appendChild(projectFormName);
+        projectForm.appendChild(projectFormDescription);
+        projectForm.appendChild(projectFormSubmit);
+
+        projectArea.appendChild(projectAreaClose);
+        projectArea.appendChild(projectForm);
         
-        this.main.appendChild(form);
+        this.main.appendChild(projectArea);
     }
 
     displayNewTodoArea(projectId) {
@@ -403,8 +419,8 @@ class UI {
 
                 let projectFormName = document.createElement("input");
                 projectFormName.classList.add("project-form-name");
-                projectFormName.setAttribute("type", "text");
                 projectFormName.setAttribute("placeholder", "Project name");
+                projectFormName.setAttribute("type", "text");
                 projectFormName.value = this.todoList.projects[i].name;
                 projectFormName.addEventListener("keydown", this.updateEditedProjectName.bind(this));
                 projectFormName.addEventListener("keyup", this.updateEditedProjectName.bind(this));

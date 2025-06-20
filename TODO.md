@@ -22,6 +22,7 @@ A list of tasks for this project.
         - [ ] From project view
     - [x] Create todo dialog should display on top of current interface
     - [x] Update todo dialog should display on top of current interface
+- [ ] Allow users to close create project dialog
 - Validate application
     - [ ] Project
         - [ ] Title

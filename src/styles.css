@@ -19,34 +19,6 @@ input, button, select {
     -webkit-appearance: none;
 }
 
-/* Dialog */
-#dialog {
-    display: block;
-
-    width: 100vw;
-    height: 100vh;
-
-    background-color: #AAAAAA;
-}
-
-#dialog-area {
-    display: block;
-
-    width: 800px;
-    height: 300px;
-    border: 2px solid black;
-
-    background-color: white;
-}
-
-.dialog-project-name {
-
-}
-
-.dialog-project-descripton {
-
-}
-
 /* Header */
 header {
     padding: 20px 0;
