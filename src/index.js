@@ -57,11 +57,7 @@ function loadLocalStorage(todoList) {
             );
 
             currentProject.addTodo(currentTodo);
-
-            console.log(currentTodo);
         }
-
-        console.log(currentProject);
     }
 }
 

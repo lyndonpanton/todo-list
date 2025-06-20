@@ -1,3 +1,7 @@
+import iconX from "./icon/x.svg";
+import iconFacebook from "./icon/facebook.svg";
+import iconInstagram from "./icon/instagram.svg";
+
 class Footer {
     constructor(copyRightHolder, copyRightRights) {
         this.copyRightHolder = copyRightHolder;
@@ -6,12 +10,13 @@ class Footer {
     }
 
     displayFooter() {
-        this.footer.appendChild(this.getCopyright());
         this.footer.appendChild(this.getTechnology());
+        this.footer.appendChild(this.getExternal());
+        this.footer.appendChild(this.getCopyright());
     }
 
     getTechnology() {
-        let technology = document.createElement("section");
+        let technology = document.createElement("article");
         technology.setAttribute("id", "footer-technology");
 
         technology.appendChild(this.getTechnologyDeveloper());
@@ -100,25 +105,25 @@ class Footer {
         dateFNSLink.textContent = "date-fns";
         dateFNS.appendChild(dateFNSLink);
 
-        let pictogrammers = document.createElement("li");
-        let pictogrammersLink = document.createElement("a");
-        pictogrammersLink.setAttribute("href", "https://pictogrammers.com/");
-        pictogrammersLink.setAttribute("target", "_blank");
-        pictogrammersLink.textContent = "Pictogrammers";
-        pictogrammers.appendChild(pictogrammersLink);
+        let simpleIcons = document.createElement("li");
+        let simpleIconsLink = document.createElement("a");
+        simpleIconsLink.setAttribute("href", "https://simpleicons.org/");
+        simpleIconsLink.setAttribute("target", "_blank");
+        simpleIconsLink.textContent = "Simple Icons";
+        simpleIcons.appendChild(simpleIconsLink);
 
-        let fontLibrary = document.createElement("li");
-        let fontLibraryLink = document.createElement("a");
-        fontLibraryLink.setAttribute("href", "#");
-        fontLibraryLink.setAttribute("target", "_blank");
-        fontLibraryLink.text = "{ font library }";
-        fontLibrary.appendChild(fontLibraryLink);
+        let fontSource = document.createElement("li");
+        let fontSourceLink = document.createElement("a");
+        fontSourceLink.setAttribute("href", "https://fontsource.org/");
+        fontSourceLink.setAttribute("target", "_blank");
+        fontSourceLink.text = "Font Source";
+        fontSource.appendChild(fontSourceLink);
 
         list.appendChild(npm);
         list.appendChild(webpack);
         list.appendChild(dateFNS);
-        list.appendChild(pictogrammers);
-        list.appendChild(fontLibrary);
+        list.appendChild(simpleIcons);
+        list.appendChild(fontSource);
 
         return list;
     }
@@ -164,15 +169,83 @@ class Footer {
     }
 
     getExternal() {
+        let external = document.createElement("article");
+        external.setAttribute("id", "footer-external");
 
+        external.appendChild(this.getExternalLegal());
+        external.appendChild(this.getExternalSocial());
+
+        return external;
     }
 
     getExternalLegal() {
+        let legal = document.createElement("ul");
+        legal.classList.add("external-list");
 
+        let privacyPolicy = document.createElement("li");
+        let privacyPolicyLink = document.createElement("a");
+        privacyPolicyLink.setAttribute("href", "#");
+        privacyPolicyLink.textContent = "Privacy Policy";
+        privacyPolicy.appendChild(privacyPolicyLink);
+
+        let termsAndConditions = document.createElement("li");
+        let termsAndConditionsLink = document.createElement("a");
+        termsAndConditionsLink.setAttribute("href", "#");
+        termsAndConditionsLink.textContent = "Terms and Conditions";
+        termsAndConditions.appendChild(termsAndConditionsLink);
+
+        let cookies = document.createElement("li");
+        let cookiesLink = document.createElement("a");
+        cookiesLink.setAttribute("href", "#");
+        cookiesLink.textContent = "Cookies";
+        cookies.appendChild(cookiesLink);
+
+        legal.appendChild(privacyPolicy);
+        legal.appendChild(termsAndConditions);
+        legal.appendChild(cookies);
+
+        return legal;
     }
 
     getExternalSocial() {
+        let social = document.createElement("ul");
+        social.classList.add("external-list");
 
+        let x = document.createElement("li");
+        let xLink = document.createElement("a");
+        xLink.setAttribute("href", "https://x.com/");
+        xLink.setAttribute("target", "_blank");
+        let xIcon = document.createElement("img");
+        xIcon.setAttribute("alt", "X social media icon");
+        xIcon.setAttribute("src", iconX);
+        xLink.appendChild(xIcon);
+        x.appendChild(xLink);
+
+        let facebook = document.createElement("li");
+        let facebookLink = document.createElement("a");
+        facebookLink.setAttribute("href", "https://www.facebook.com/");
+        facebookLink.setAttribute("target", "_blank");
+        let facebookIcon = document.createElement("img");
+        facebookIcon.setAttribute("alt", "Facebook social media icon");
+        facebookIcon.setAttribute("src", iconFacebook);
+        facebookLink.appendChild(facebookIcon);
+        facebook.appendChild(facebookLink);
+
+        let instagram = document.createElement("li");
+        let instagramLink = document.createElement("a");
+        instagramLink.setAttribute("href", "https://www.instagram.com/");
+        instagramLink.setAttribute("target", "_blank");
+        let instagramIcon = document.createElement("img");
+        instagramIcon.setAttribute("alt", "Instagram social media icon");
+        instagramIcon.setAttribute("src", iconInstagram);
+        instagramLink.appendChild(instagramIcon);
+        instagram.appendChild(instagramLink);
+
+        social.appendChild(x);
+        social.appendChild(facebook);
+        social.appendChild(instagram);
+
+        return social;
     }
 
     getCopyright() {
