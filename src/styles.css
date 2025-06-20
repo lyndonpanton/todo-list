@@ -36,6 +36,11 @@ h1 {
     text-align: center;
 }
 
+/* main */
+main {
+    min-height: 100vh;
+}
+
 /* Todo List */
 #todo-list {
     padding: 40px 40px;
@@ -623,3 +628,131 @@ h1 {
 } */
 
 /* Footer */
+footer {
+    border-top: 1px solid #DDDDDD;
+    padding: 0 8vw;
+
+    /* background-color: #4682A1; */
+
+    /* color: white; */
+}
+
+#footer-technology {
+    display: flex;
+    justify-content: space-around;
+    padding: 60px 0 80px;
+    border-bottom: 1px solid #DDDDDD;
+}
+
+.technology-list {
+    padding: 0;
+
+    list-style-type: none;
+}
+
+.technology-list > li {
+    margin: 0 0 20px;
+
+    font-size: 1.3rem;
+}
+
+.technology-list > li.technology-list-heading {
+    margin-bottom: 50px;
+
+    font-size: 1.6rem;
+}
+
+.technology-list > li > a {
+    color: #888888;
+    text-decoration: none;
+}
+
+.technology-list > li:first-child > a {
+    color: black;
+}
+
+.technology-list > li > a:hover {
+    color: black;
+    text-decoration: underline;
+}
+
+#footer-external {
+    display: flex;
+    justify-content: space-between;
+
+    font-size: 1.5rem;
+}
+
+.external-list {
+    display: flex;
+    
+    margin: 25px 0;
+    padding: 0;
+
+    list-style-type: none;
+}
+
+.external-list:first-child {
+    gap: 25px;
+    justify-content: start;
+}
+
+.external-list:first-child > li {
+    margin-right: 40px;
+}
+
+.external-list:first-child > li > a {
+    color: #888888;
+    text-decoration: none;
+}
+
+.external-list:first-child > li > a:hover {
+    color: black;
+    text-decoration: underline;
+}
+
+.external-list:last-child {
+    gap: 50px; 
+}
+
+.external-list:last-child > li {
+    
+}
+
+.external-list:last-child > li > a {
+    
+}
+
+.external-list:last-child > li > a:hover {
+    
+}
+
+.external-list:last-child > li > a > img {
+    width: 30px;
+    height: auto;
+
+    /* filter: invert(99%) sepia(0%) saturate(4270%) hue-rotate(30deg)
+            brightness(111%) contrast(100%); */
+    filter: invert(79%) sepia(0%) saturate(11%) hue-rotate(346deg)
+            brightness(87%) contrast(86%);
+}
+
+.external-list:last-child > .external-list-x:hover > a > img {
+    filter: invert(0%) sepia(100%) saturate(0%) hue-rotate(21deg)
+            brightness(97%) contrast(103%);
+}
+
+.external-list:last-child > .external-list-facebook:hover > a > img {
+    filter: invert(29%) sepia(65%) saturate(2680%) hue-rotate(206deg)
+            brightness(104%) contrast(90%);
+}
+
+.external-list:last-child > .external-list-instagram:hover > a > img {
+    filter: invert(31%) sepia(58%) saturate(1915%) hue-rotate(295deg) brightness(84%) contrast(91%);
+}
+
+#footer-copyright {
+    padding: 20px 0 40px;
+    font-size: 1.5rem;
+    text-align: center;
+}

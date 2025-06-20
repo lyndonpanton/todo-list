@@ -31,6 +31,10 @@ class Footer {
         let list = document.createElement("ul");
         list.classList.add("technology-list");
 
+        let heading = document.createElement("li");
+        heading.classList.add("technology-list-heading");
+        heading.textContent = "Developer Information";
+
         let github = document.createElement("li");
         let githubLink = document.createElement("a");
         githubLink.setAttribute("href", "https://github.com/lyndonpanton");
@@ -45,10 +49,11 @@ class Footer {
 
         let linkedIn = document.createElement("li");
         let linkedInLink = document.createElement("a");
-        linkedInLink.setAttribute("href", "https://linkedin.com/lyndonpanton");
+        linkedInLink.setAttribute("href", "https://linkedin.com/in/lyndonpanton");
         linkedInLink.textContent = "LinkedIn";
         linkedIn.appendChild(linkedInLink);
 
+        list.appendChild(heading);
         list.appendChild(github);
         list.appendChild(portfolio);
         list.appendChild(linkedIn);
@@ -60,22 +65,35 @@ class Footer {
         let list = document.createElement("ul");
         list.classList.add("technology-list");
 
+        let heading = document.createElement("li");
+        heading.classList.add("technology-list-heading");
+        heading.textContent = "Languages and Frameworks";
+
         let html = document.createElement("li");
-        html.textContent = "HTML";
+        let htmlLink = document.createElement("a");
+        htmlLink.setAttribute("href", "https://developer.mozilla.org/en-US/docs/Web/HTML");
+        htmlLink.setAttribute("target", "_blank");
+        htmlLink.textContent = "HTML";
+        html.appendChild(htmlLink);
 
         let css = document.createElement("li");
-        css.textContent = "CSS";
+        let cssLink = document.createElement("a");
+        cssLink.setAttribute("href", "https://developer.mozilla.org/en-US/docs/Web/CSS");
+        cssLink.setAttribute("target", "_blank");
+        cssLink.textContent = "CSS";
+        css.appendChild(cssLink);
 
         let javaScript = document.createElement("li");
-        javaScript.textContent = "JavaScript";
+        let javaScriptLink = document.createElement("a");
+        javaScriptLink.setAttribute("href", "https://developer.mozilla.org/en-US/docs/Web/JavaScript");
+        javaScriptLink.setAttribute("target", "_blank");
+        javaScriptLink.textContent = "JavaScript";
+        javaScript.appendChild(javaScriptLink);
 
-        let nodeJS = document.createElement("li");
-        nodeJS.textContent = "NodeJS";
-
+        list.appendChild(heading);
         list.appendChild(html);
         list.appendChild(css);
         list.appendChild(javaScript);
-        list.appendChild(nodeJS);
 
         return list;
     }
@@ -83,6 +101,10 @@ class Footer {
     getTechnologyManagersPackagesLibraries() {
         let list = document.createElement("ul");
         list.classList.add("technology-list");
+
+        let heading = document.createElement("li");
+        heading.classList.add("technology-list-heading");
+        heading.textContent = "Managers, Packages, and Libraries";
 
         let npm = document.createElement("li");
         let npmLink = document.createElement("a");
@@ -119,6 +141,7 @@ class Footer {
         fontSourceLink.text = "Font Source";
         fontSource.appendChild(fontSourceLink);
 
+        list.appendChild(heading);
         list.appendChild(npm);
         list.appendChild(webpack);
         list.appendChild(dateFNS);
@@ -131,6 +154,10 @@ class Footer {
     getTechnologyProjects() {
         let list = document.createElement("ul");
         list.classList.add("technology-list");
+
+        let heading = document.createElement("li");
+        heading.classList.add("technology-list-heading");
+        heading.textContent = "More Projects";
 
         let taskList = document.createElement("li");
         let taskListLink = document.createElement("a");
@@ -160,6 +187,7 @@ class Footer {
         pixelArtEditorLink.textContent = "Pixel Art Editor";
         pixelArtEditor.appendChild(pixelArtEditorLink);
 
+        list.appendChild(heading);
         list.appendChild(taskList);
         list.appendChild(wordCounter);
         list.appendChild(currencyConverter);
@@ -212,6 +240,7 @@ class Footer {
         social.classList.add("external-list");
 
         let x = document.createElement("li");
+        x.classList.add("external-list-x")
         let xLink = document.createElement("a");
         xLink.setAttribute("href", "https://x.com/");
         xLink.setAttribute("target", "_blank");
@@ -222,6 +251,7 @@ class Footer {
         x.appendChild(xLink);
 
         let facebook = document.createElement("li");
+        facebook.classList.add("external-list-facebook")
         let facebookLink = document.createElement("a");
         facebookLink.setAttribute("href", "https://www.facebook.com/");
         facebookLink.setAttribute("target", "_blank");
@@ -232,6 +262,7 @@ class Footer {
         facebook.appendChild(facebookLink);
 
         let instagram = document.createElement("li");
+        instagram.classList.add("external-list-instagram")
         let instagramLink = document.createElement("a");
         instagramLink.setAttribute("href", "https://www.instagram.com/");
         instagramLink.setAttribute("target", "_blank");
