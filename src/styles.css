@@ -1,5 +1,26 @@
+@font-face {
+    font-family: "Afacad Flux Regular";
+    src:
+        url("./font/afacad-flux/static/AfacadFlux-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Afacad Flux Light";
+    src:
+        url("./font/afacad-flux/static/AfacadFlux-Light.ttf");
+}
+
+@font-face {
+    font-family: "Afacad Flux Thin";
+    src:
+        url("./font/afacad-flux/static/AfacadFlux-Thin.ttf");
+}
+
 * {
     box-sizing: border-box;
+    font-family: "Afacad Flux Regular", "Gill Sans", "Gill Sans MT", Calibri,
+            "Trebuchet MS", sans-serif;
+    font-weight: normal;
 }
 
 body, html {
@@ -631,10 +652,6 @@ main {
 footer {
     border-top: 1px solid #DDDDDD;
     padding: 0 8vw;
-
-    /* background-color: #4682A1; */
-
-    /* color: white; */
 }
 
 #footer-technology {
@@ -731,8 +748,6 @@ footer {
     width: 30px;
     height: auto;
 
-    /* filter: invert(99%) sepia(0%) saturate(4270%) hue-rotate(30deg)
-            brightness(111%) contrast(100%); */
     filter: invert(79%) sepia(0%) saturate(11%) hue-rotate(346deg)
             brightness(87%) contrast(86%);
 }
