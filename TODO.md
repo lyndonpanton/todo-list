@@ -8,22 +8,12 @@ A list of tasks for this project.
 
 ### MVP
 
-- [ ] Style application
-    - [x] Creating todos titles with a lot of text breaks in
-        - [x] Project view
-    - [x] Creating projects titles with a lot of text breaks in
-        - [x] Todo list view
-        - [x] Project view
-    - [x] Creating projects descriptions with a lot of text breaks in project
-    view
-    - [ ] Create project dialog should display on top of current interface
-    - [ ] Update project dialog should display on top of current interface
-        - [ ] From todo list view
-        - [ ] From project view
-    - [x] Create todo dialog should display on top of current interface
-    - [x] Update todo dialog should display on top of current interface
-- [ ] Allow users to close create project dialog
-- Validate application
+- [ ] Template elements should be rendered using JavaScript
+    - [x] Header
+    - [ ] Footer
+- [ ] Style footer
+- [ ] Change font
+- [ ] Validate application
     - [ ] Project
         - [ ] Title
             - [ ] String
@@ -44,9 +34,20 @@ A list of tasks for this project.
             - [ ] Date
         - [ ] Priority
             - [ ] Integer: 1 - 5
-- [ ] Template elements should be rendered using JavaScript
-    - [x] Header
-    - [ ] Footer
+- [x] Style application
+    - [x] Creating todos titles with a lot of text breaks in
+        - [x] Project view
+    - [x] Creating projects titles with a lot of text breaks in
+        - [x] Todo list view
+        - [x] Project view
+    - [x] Creating projects descriptions with a lot of text breaks in project
+    view
+    - [x] Create project dialog should display on top of current interface
+    - [x] Update project dialog should display on top of current interface
+        - [x] From todo list view
+        - [x] From project view
+    - [x] Create todo dialog should display on top of current interface
+    - [x] Update todo dialog should display on top of current interface
 - [x] The application should have data persistence
     - [x] Application start: Load local storage
     - [x] Create project: Save local storage

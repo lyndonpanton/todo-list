@@ -5,6 +5,7 @@ import TodoList from "./TodoList";
 import Project from "./Project";
 import Todo from "./Todo";
 import UI from "./UI";
+import Footer from "./Footer";
 
 console.log("Webpack has been configured successfully");
 
@@ -76,6 +77,8 @@ if (localStorage) {
 
 let ui = new UI(todoList);
 
+let footer = new Footer("Lyndon Mykal Panton", "All Rights Reserved");
+
 // let project1 = new Project("Shopping", "Items to buy for my weekly shopping list");
 // let project2 = new Project("Fitness", "A list of notes for my workout program");
 
@@ -95,3 +98,4 @@ let ui = new UI(todoList);
 
 header.displayHeader();
 ui.displayTodoList();
+footer.displayFooter();
