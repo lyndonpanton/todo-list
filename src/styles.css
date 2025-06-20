@@ -411,9 +411,87 @@ h1 {
 
 }
 
-/* New Project */
+/* Edit Project, New Project */
+#project-area {
+    position: absolute;
+    top: 0;
+    left: 0;
 
-/* Edit Todo */
+    width: 100vw;
+    height: 100vh;
+
+    background-color: rgba(240, 240, 240, 0.5);
+}
+
+.project-area-close {
+    position: absolute;
+    top: 0px;
+    right: 60px;
+
+    height: 1lh;
+    border: none;
+    padding: 0;
+
+    background-color: transparent;
+
+    font-size: 8rem;
+}
+
+.project-form {
+    position: absolute;
+    top: 35vh;
+    left: 27.5vw;
+
+    width: 45vw;
+    height: 300px;
+    border: 2px solid black;
+    border-radius: 4px;
+    padding: 40px 20px 60px;
+    
+    background-color: white;
+}
+
+.project-form > * {
+    font-family: inherit;
+    font-size: 1.4rem;
+}
+
+.project-form-name {
+    display: block;
+
+    margin: 0 auto;
+    width: 60%;
+    height: 40px;
+    padding: 0 10px;
+
+    text-align: center;
+}
+
+.project-form-description {
+    display: block;
+
+    margin: 20px auto;
+    width: 100%;
+    height: 60%;
+    padding: 10px 8px 6px;
+
+    resize: none;
+
+    font-size: 1.2rem;
+}
+
+.project-form-submit {
+    display: block;
+
+    margin: 0 auto;
+    width: 200px;
+    height: 1.5lh;
+    border-radius: 4px;
+
+    background-color: #AACCFF;
+}
+
+/* Edit Todo, New Todo */
 #todo-area, #new-todo-area {
     position: absolute;
     top: 0;

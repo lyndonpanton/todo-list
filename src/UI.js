@@ -392,8 +392,9 @@ class UI {
                 projectArea.setAttribute("id", "project-area");
 
                 let projectAreaClose = document.createElement("button");
-                projectAreaClose.textContent = "x";
+                projectAreaClose.classList.add("project-area-close");
                 projectAreaClose.setAttribute("type", "button");
+                projectAreaClose.textContent = "x";
                 projectAreaClose.addEventListener("click", () => this.closeArea(projectArea));
 
                 let projectForm = document.createElement("form");
@@ -403,12 +404,14 @@ class UI {
                 let projectFormName = document.createElement("input");
                 projectFormName.classList.add("project-form-name");
                 projectFormName.setAttribute("type", "text");
+                projectFormName.setAttribute("placeholder", "Project name");
                 projectFormName.value = this.todoList.projects[i].name;
                 projectFormName.addEventListener("keydown", this.updateEditedProjectName.bind(this));
                 projectFormName.addEventListener("keyup", this.updateEditedProjectName.bind(this));
                 
                 let projectFormDescription = document.createElement("textarea");
                 projectFormDescription.classList.add("project-form-description");
+                projectFormDescription.setAttribute("placeholder", "Project description");
                 projectFormDescription.value = this.todoList.projects[i].description;
                 projectFormDescription.addEventListener("keydown", this.updateEditedProjectDescription.bind(this));
                 projectFormDescription.addEventListener("keyup", this.updateEditedProjectDescription.bind(this));
