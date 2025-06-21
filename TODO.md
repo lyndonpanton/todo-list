@@ -8,30 +8,9 @@ A list of tasks for this project.
 
 ### MVP
 
-- [ ] Build project
-    - [ ] Bundle code
-    - [ ] Add relevant files to Git
-- [ ] Validate application
-    - [ ] Project
-        - [ ] Title
-            - [ ] String
-            - [ ] 40 characters
-        - [ ] Description
-            - [ ] String
-            - [ ] 400 characters
-    - [ ] Todo
-        - [ ] Title
-            - [ ] String
-            - [ ] 40 characters
-        - [ ] Description
-            - [ ] String
-            - [ ] 400 characters
-        - [ ] Is Complete
-            - [ ] Boolean
-        - [ ] Due Date
-            - [ ] Date
-        - [ ] Priority
-            - [ ] Integer: 1 - 5
+- [x] Build project
+    - [x] Bundle code
+    - [x] Add relevant files to Git
 - [x] Change font
 - [x] Style application
     - [x] Header
@@ -104,15 +83,27 @@ back to the previous interface after submission
 
 ### Additional
 
-- [ ] Resetting input data properties (`UI.js`) should be done in specific
-methods
-- [ ] Form validation
+- [ ] Validate application
     - [ ] Project
-        - [ ] Create
-        - [ ] Update
+        - [ ] Title
+            - [ ] String
+            - [ ] 40 characters
+        - [ ] Description
+            - [ ] String
+            - [ ] 400 characters
     - [ ] Todo
-        - [ ] Create
-        - [ ] Update
+        - [ ] Title
+            - [ ] String
+            - [ ] 40 characters
+        - [ ] Description
+            - [ ] String
+            - [ ] 400 characters
+        - [ ] Is Complete
+            - [ ] Boolean
+        - [ ] Due Date
+            - [ ] Date
+        - [ ] Priority
+            - [ ] Integer: 1 - 5
 - [ ] Confirmation
     - [ ] Deleting a project
     - [ ] Deleting a todo
