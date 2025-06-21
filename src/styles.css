@@ -411,7 +411,7 @@ main {
 
 /* Edit Project, New Project */
 #project-area {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
 
@@ -491,7 +491,7 @@ main {
 
 /* Edit Todo, New Todo */
 #todo-area, #new-todo-area {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
 

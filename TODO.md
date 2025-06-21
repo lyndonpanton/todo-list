@@ -8,9 +8,9 @@ A list of tasks for this project.
 
 ### MVP
 
-- [ ] Add resources to [README.md](./README.md) see [Footer.js](./src/Footer.js)
-    - [ ] Font library (if one is used)
-    - [ ] Hex colour to css filter
+- [ ] Build project
+    - [ ] Bundle code
+    - [ ] Add relevant files to Git
 - [ ] Validate application
     - [ ] Project
         - [ ] Title
